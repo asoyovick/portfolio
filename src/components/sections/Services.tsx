@@ -16,8 +16,6 @@ const services = [
         <polyline points="8 6 2 12 8 18" />
       </svg>
     ),
-    gradient: "from-[var(--color-accent-blue)]/20 to-[var(--color-accent-blue)]/5",
-    accentColor: "var(--color-accent-blue)",
   },
   {
     title: "AI & Automation",
@@ -36,8 +34,6 @@ const services = [
         <circle cx="12" cy="18" r="2" />
       </svg>
     ),
-    gradient: "from-[var(--color-accent-orange)]/20 to-[var(--color-accent-orange)]/5",
-    accentColor: "var(--color-accent-orange)",
   },
   {
     title: "Web Development",
@@ -55,8 +51,6 @@ const services = [
         <line x1="12" y1="17" x2="12" y2="21" />
       </svg>
     ),
-    gradient: "from-[var(--color-accent-blue)]/15 to-[var(--color-accent-orange)]/10",
-    accentColor: "var(--color-accent-blue)",
   },
   {
     title: "Digital Design",
@@ -77,8 +71,6 @@ const services = [
         <line x1="12" y1="7" x2="12" y2="3" />
       </svg>
     ),
-    gradient: "from-[var(--color-accent-orange)]/15 to-[var(--color-accent-orange)]/5",
-    accentColor: "var(--color-accent-orange)",
   },
 ];
 
@@ -89,29 +81,19 @@ export default function Services() {
       className="py-24 lg:py-32 relative"
       aria-labelledby="services-heading"
     >
-      {/* Background accent */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-30"
-        style={{
-          background: `
-            radial-gradient(circle at 20% 50%, var(--color-accent-blue)/5 0%, transparent 40%),
-            radial-gradient(circle at 80% 20%, var(--color-accent-orange)/5 0%, transparent 40%)
-          `,
-        }}
-        aria-hidden="true"
-      />
+
 
       <div className="container">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <span className="text-[var(--color-accent-orange)] text-sm font-medium tracking-widest uppercase">
+            <span className="text-[var(--color-blue-500)] text-sm font-medium tracking-widest uppercase font-mono">
               What I Do
             </span>
-            <h2 id="services-heading" className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mt-3">
+            <h2 id="services-heading" className="font-mono text-2xl sm:text-3xl lg:text-4xl font-bold mt-3 text-[var(--color-text-primary)]">
               Building across disciplines
             </h2>
-            <div className="gradient-line max-w-24 mx-auto mt-4" aria-hidden="true" />
-            <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto mt-6">
+            <div className="accent-line max-w-24 mx-auto mt-4" aria-hidden="true" />
+            <p className="text-base sm:text-lg font-mono text-[var(--color-text-secondary)] max-w-2xl mx-auto mt-6">
               From backend systems to visual design — I work across the full spectrum of digital product creation.
             </p>
           </div>
@@ -124,24 +106,21 @@ export default function Services() {
               key={service.title}
               delay={index * 100}
             >
-              <article className="group relative rounded-2xl bg-[var(--color-bg-secondary)] border border-[var(--color-border)] overflow-hidden hover:border-[var(--color-accent-blue)]/20 transition-all duration-300">
-                {/* Decorative gradient area */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} aria-hidden="true" />
-
-                <div className="relative p-6 lg:p-8">
+              <article              className="group relative rounded-2xl bg-[var(--color-blue-500)]/5 border border-[var(--color-blue-500)]/20 overflow-hidden hover:border-[var(--color-blue-500)]/40 transition-all duration-300">                <div className="relative p-6 lg:p-8">
                   {/* Icon */}
                   <div
-                    className="w-14 h-14 rounded-xl bg-[var(--color-bg-card)] border border-[var(--color-border)] flex items-center justify-center mb-5 group-hover:border-[var(--color-accent-blue)]/30 transition-colors"
+                    className="w-14 h-14 rounded-xl bg-[var(--color-blue-500)]/5 border border-[var(--color-blue-500)]/20 flex items-center justify-center mb-5 group-hover:border-[var(--color-blue-500)]/40 transition-colors"
                   >
-                    <span className={`text-${index % 2 === 0 ? 'accent-blue' : 'accent-orange'}`} style={{ color: service.accentColor }}>
+                    <span style={{ color: "var(--color-blue-500)" }}>
                       {service.icon}
                     </span>
-                  </div>
+                  </div
+>
 
-                  <h3 className="font-display text-xl font-semibold text-[var(--color-text-primary)] mb-3 group-hover:text-[var(--color-accent-blue-light)] transition-colors">
+                  <h3 className="font-mono text-lg sm:text-xl font-semibold text-[var(--color-text-primary)] mb-3 group-hover:text-[var(--color-blue-400)] transition-colors">
                     {service.title}
                   </h3>
-                  <p className="text-[var(--color-text-secondary)] leading-relaxed mb-5">
+                  <p className="text-base sm:text-lg leading-relaxed font-mono text-[var(--color-text-secondary)] mb-5">
                     {service.description}
                   </p>
 
@@ -150,11 +129,10 @@ export default function Services() {
                     {service.details.map((detail, detailIndex) => (
                       <li
                         key={detailIndex}
-                        className="flex items-start gap-2.5 text-sm text-[var(--color-text-muted)]"
+                        className="flex items-start gap-2.5 text-sm font-mono text-[var(--color-text-muted)]"
                       >
                         <span
-                          className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0"
-                          style={{ backgroundColor: service.accentColor }}
+                          className="mt-1 w-1.5 h-1.5 rounded-full bg-[var(--color-blue-500)] flex-shrink-0"
                           aria-hidden="true"
                         />
                         <span>{detail}</span>

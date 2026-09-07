@@ -87,7 +87,7 @@ function ProjectVisual({ type }: { type: Project["visual"] }) {
   switch (type) {
     case "ai":
       return (
-        <div className="p-6 rounded-xl bg-[var(--color-bg-tertiary)] border border-[var(--color-border)]">
+        <div className="p-6 rounded-xl bg-[var(--color-blue-500)]/5 border border-[var(--color-blue-500)]/20">
           {/* Abstract AI visualization - connected nodes */}
           <svg
             viewBox="0 0 200 120"
@@ -97,8 +97,8 @@ function ProjectVisual({ type }: { type: Project["visual"] }) {
             {/* Central node */}
             <circle cx="100" cy="60" r="12" fill="var(--color-accent-blue)" className="animate-pulse" style={{ animationDuration: "3s" }} />
             {/* Connected nodes */}
-            <circle cx="40" cy="20" r="6" fill="var(--color-accent-orange)" />
-            <circle cx="160" cy="20" r="6" fill="var(--color-accent-orange)" />
+            <circle cx="40" cy="20" r="6" fill="var(--color-blue-500)" />
+            <circle cx="160" cy="20" r="6" fill="var(--color-blue-500)" />
             <circle cx="30" cy="90" r="5" fill="var(--color-accent-blue-light)" />
             <circle cx="170" cy="90" r="5" fill="var(--color-accent-blue-light)" />
             <circle cx="60" cy="40" r="4" fill="var(--color-text-muted)" />
@@ -108,8 +108,8 @@ function ProjectVisual({ type }: { type: Project["visual"] }) {
             <line x1="100" y1="60" x2="160" y2="20" stroke="var(--color-accent-blue)" strokeWidth="1.5" opacity="0.5" />
             <line x1="100" y1="60" x2="30" y2="90" stroke="var(--color-accent-blue)" strokeWidth="1" opacity="0.3" />
             <line x1="100" y1="60" x2="170" y2="90" stroke="var(--color-accent-blue)" strokeWidth="1" opacity="0.3" />
-            <line x1="40" y1="20" x2="30" y2="90" stroke="var(--color-accent-orange)" strokeWidth="0.5" opacity="0.3" />
-            <line x1="160" y1="20" x2="170" y2="90" stroke="var(--color-accent-orange)" strokeWidth="0.5" opacity="0.3" />
+            <line x1="40" y1="20" x2="30" y2="90" stroke="var(--color-blue-500)" strokeWidth="0.5" opacity="0.3" />
+            <line x1="160" y1="20" x2="170" y2="90" stroke="var(--color-blue-500)" strokeWidth="0.5" opacity="0.3" />
           </svg>
           <div className="absolute bottom-4 right-4 text-xs font-mono text-[var(--color-text-muted)]">
             AI · CONNECTED
@@ -119,7 +119,7 @@ function ProjectVisual({ type }: { type: Project["visual"] }) {
 
     case "web":
       return (
-        <div className="p-6 rounded-xl bg-[var(--color-bg-tertiary)] border border-[var(--color-border)]">
+        <div className="p-6 rounded-xl bg-[var(--color-blue-500)]/5 border border-[var(--color-blue-500)]/20">
           {/* Browser mockup */}
           <svg
             viewBox="0 0 200 120"
@@ -131,13 +131,13 @@ function ProjectVisual({ type }: { type: Project["visual"] }) {
             {/* Title bar */}
             <rect x="10" y="10" width="180" height="16" rx="4" fill="var(--color-bg-card)" />
             <circle cx="22" cy="18" r="3" fill="var(--color-accent-red)" />
-            <circle cx="32" cy="18" r="3" fill="var(--color-accent-orange)" />
+            <circle cx="32" cy="18" r="3" fill="var(--color-blue-400)" />
             <circle cx="42" cy="18" r="3" fill="var(--color-accent-green)" />
             {/* Content blocks */}
             <rect x="25" y="40" width="60" height="12" rx="2" fill="var(--color-accent-blue)" opacity="0.6" />
             <rect x="25" y="60" width="150" height="8" rx="2" fill="var(--color-border)" />
             <rect x="25" y="75" width="120" height="8" rx="2" fill="var(--color-border)" />
-            <rect x="25" y="90" width="40" height="6" rx="2" fill="var(--color-accent-orange)" opacity="0.6" />
+            <rect x="25" y="90" width="40" height="6" rx="2" fill="var(--color-blue-400)" opacity="0.6" />
           </svg>
           <div className="absolute bottom-4 right-4 text-xs font-mono text-[var(--color-text-muted)]">
             WEB · RESPONSIVE
@@ -147,11 +147,11 @@ function ProjectVisual({ type }: { type: Project["visual"] }) {
 
     case "compiler":
       return (
-        <div className="p-6 rounded-xl bg-[var(--color-bg-tertiary)] border border-[var(--color-border)] font-mono text-xs" aria-hidden="true">
+        <div className="p-6 rounded-xl bg-[var(--color-blue-500)]/5 border border-[var(--color-blue-500)]/20 font-mono text-xs" aria-hidden="true">
           <div className="text-[var(--color-accent-green)]">$</div>
           <div className="text-[var(--color-text-primary)]"> micro-templ source.tpl --output result.html</div>
           <div className="mt-2 text-[var(--color-text-muted)]">
-            <span className="text-[var(--color-accent-orange)]">Parsing</span> template tokens...
+            <span className="text-[var(--color-blue-400)]">Parsing</span> template tokens...
           </div>
           <div className="text-[var(--color-text-muted)]">
             <span className="text-[var(--color-accent-blue)]">Processing</span> runes...
@@ -165,7 +165,7 @@ function ProjectVisual({ type }: { type: Project["visual"] }) {
 
     case "algorithms":
       return (
-        <div className="p-6 rounded-xl bg-[var(--color-bg-tertiary)] border border-[var(--color-border)]">
+        <div className="p-6 rounded-xl bg-[var(--color-blue-500)]/5 border border-[var(--color-blue-500)]/20">
           {/* Stack visualization */}
           <svg
             viewBox="0 0 200 120"
@@ -179,8 +179,8 @@ function ProjectVisual({ type }: { type: Project["visual"] }) {
             <rect x="30" y="74" width="15" height="15" fill="var(--color-accent-blue)" opacity="0.4" />
             <text x="37" y="105" textAnchor="middle" fill="var(--color-text-muted)" fontSize="10">A</text>
             {/* Stack B */}
-            <rect x="155" y="60" width="15" height="15" fill="var(--color-accent-orange)" />
-            <rect x="155" y="78" width="15" height="15" fill="var(--color-accent-orange)" opacity="0.8" />
+            <rect x="155" y="60" width="15" height="15" fill="var(--color-blue-500)" />
+            <rect x="155" y="78" width="15" height="15" fill="var(--color-blue-500)" opacity="0.8" />
             <text x="162" y="105" textAnchor="middle" fill="var(--color-text-muted)" fontSize="10">B</text>
             {/* Arrow */}
             <path d="M 48 60 Q 92 40 150 65" fill="none" stroke="var(--color-accent-blue)" strokeWidth="1" strokeDasharray="4 2" />
@@ -210,15 +210,15 @@ function ProjectCard({ project }: { project: Project }) {
       <div
         className={`rounded-2xl overflow-hidden border transition-all duration-300 ${
           isFeatured
-            ? "bg-[var(--color-bg-secondary)] border-[var(--color-accent-blue)]/30 shadow-xl shadow-[var(--color-accent-blue)]/5 card-hover"
-            : "bg-[var(--color-bg-card)] border-[var(--color-border)] card-hover"
+            ? "bg-[var(--color-blue-500)]/5 border-[var(--color-blue-500)]/30 shadow-xl shadow-[var(--color-blue-500)]/5 card-hover"
+            : "bg-[var(--color-blue-500)]/5 border-[var(--color-blue-500)]/20 card-hover"
         }`}
       >
         {/* Visual area */}
         <div
           className={`relative ${isFeatured ? "h-64 sm:h-80" : "h-48 sm:h-56"} overflow-hidden`}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-bg-tertiary)] to-[var(--color-bg-card)]" />
+          <div className="absolute inset-0 bg-[var(--color-bg-tertiary)]" />
           <ProjectVisual type={project.visual} />
 
           {/* Category badge */}
@@ -231,7 +231,7 @@ function ProjectCard({ project }: { project: Project }) {
           {/* Featured badge */}
           {isFeatured && (
             <div className="absolute top-4 right-4">
-              <span className="px-3 py-1 text-xs font-medium rounded-full bg-gradient-to-r from-[var(--color-accent-blue)] to-[var(--color-accent-orange)] text-white">
+              <span className="px-3 py-1 text-xs font-medium rounded-full bg-[var(--color-blue-500)] text-white">
                 Featured
               </span>
             </div>
@@ -256,7 +256,7 @@ function ProjectCard({ project }: { project: Project }) {
             {project.tags.slice(0, isFeatured ? undefined : 3).map((tag) => (
               <span
                 key={tag}
-                className="px-2 py-1 text-xs font-mono rounded bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)] border border-[var(--color-border)]"
+                className="px-2 py-1 text-xs font-mono rounded bg-[var(--color-blue-500)]/5 text-[var(--color-text-muted)] border border-[var(--color-blue-500)]/20"
               >
                 {tag}
               </span>
@@ -281,7 +281,7 @@ function ProjectCard({ project }: { project: Project }) {
             {project.links.demo && (
               <a
                 href={project.links.demo}
-                className="text-sm text-[var(--color-accent-orange)] hover:text-[var(--color-accent-orange-light)] transition-colors flex items-center gap-1.5"
+                className="text-sm text-[var(--color-blue-400)] hover:text-[var(--color-blue-300)] transition-colors flex items-center gap-1.5"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -310,26 +310,19 @@ function ProjectCard({ project }: { project: Project }) {
 export default function Work() {
   return (
     <section id="work" className="py-24 lg:py-32 relative">
-      {/* Background accent */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-20"
-        style={{
-          background: `radial-gradient(circle at 80% 20%, var(--color-accent-orange)/5 0%, transparent 40%)`,
-        }}
-        aria-hidden="true"
-      />
+
 
       <div className="container">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <span className="text-[var(--color-accent-blue)] text-sm font-medium tracking-widest uppercase">
+            <span className="text-[var(--color-blue-500)] text-sm font-medium tracking-widest uppercase font-mono">
               Selected Work
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mt-3">
+            <h2 className="font-mono text-2xl sm:text-3xl lg:text-4xl font-bold mt-3 text-[var(--color-text-primary)]">
               Projects I&apos;ve built
             </h2>
-            <div className="gradient-line max-w-24 mx-auto mt-4" aria-hidden="true" />
-            <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto mt-6">
+            <div className="accent-line max-w-24 mx-auto mt-4" aria-hidden="true" />
+            <p className="text-base sm:text-lg font-mono text-[var(--color-text-secondary)] max-w-2xl mx-auto mt-6">
               Each project represents a specific challenge I enjoyed solving — from AI-assisted platforms to
               algorithmic problems and full-stack web applications.
             </p>

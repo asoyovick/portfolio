@@ -5,7 +5,7 @@ const currentYear = new Date().getFullYear();
 export default function Footer() {
   return (
     <footer
-      className="py-8 border-t border-[var(--color-border)] bg-[var(--color-bg-secondary)]"
+      className="py-8 border-t border-[var(--color-blue-500)]/20 bg-[var(--color-blue-500)]/5"
       aria-label="Site footer"
     >
       <div className="container">
@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Left side */}
           <div className="flex items-center gap-2">
             <span
-              className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold bg-gradient-to-br from-[var(--color-accent-blue)] to-[var(--color-accent-orange)] text-white"
+              className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold bg-[var(--color-blue-500)] text-white"
               aria-hidden="true"
             >
               VO
@@ -34,7 +34,7 @@ export default function Footer() {
               href="https://github.com/victorouma"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--color-text-muted)] hover:text-[var(--color-accent-blue)] transition-colors"
+              className="text-[var(--color-text-muted)] hover:text-[var(--color-blue-500)] transition-colors"
               aria-label="GitHub Profile"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -45,7 +45,7 @@ export default function Footer() {
               href="https://linkedin.com/in/victorouma"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[var(--color-text-muted)] hover:text-[var(--color-accent-blue)] transition-colors"
+              className="text-[var(--color-text-muted)] hover:text-[var(--color-blue-500)] transition-colors"
               aria-label="LinkedIn Profile"
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

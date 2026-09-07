@@ -94,26 +94,18 @@ const skillProjectLinks = [
 export default function Skills() {
   return (
     <section id="skills" className="py-24 lg:py-32 relative">
-      {/* Background accent */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-20"
-        style={{
-          background: `radial-gradient(circle at 50% 80%, var(--color-accent-blue)/5 0%, transparent 50%)`,
-        }}
-        aria-hidden="true"
-      />
+
 
       <div className="container">
-        <ScrollReveal>
-          <div className="text-center mb-16">
-            <span className="text-[var(--color-accent-blue)] text-sm font-medium tracking-widest uppercase">
+        <ScrollReveal>              <div className="text-center mb-16">
+            <span className="text-[var(--color-blue-500)] text-sm font-medium tracking-widest uppercase font-mono">
               Skills & Capabilities
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mt-3">
+            <h2 className="font-mono text-2xl sm:text-3xl lg:text-4xl font-bold mt-3 text-[var(--color-text-primary)]">
               Tools I work with
             </h2>
-            <div className="gradient-line max-w-24 mx-auto mt-4" aria-hidden="true" />
-            <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto mt-6">
+            <div className="accent-line max-w-24 mx-auto mt-4" aria-hidden="true" />
+            <p className="text-base sm:text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto mt-6 font-mono">
               I don&apos;t just collect technologies. I use them to build useful things.
             </p>
           </div>
@@ -126,13 +118,13 @@ export default function Skills() {
               key={category.name}
               delay={categoryIndex * 100}
             >
-              <div className="group p-6 rounded-xl bg-[var(--color-bg-card)] border border-[var(--color-border)] hover:border-[var(--color-accent-blue)]/30 transition-all duration-300">
+              <div className="group p-6 rounded-xl bg-[var(--color-blue-500)]/5 border border-[var(--color-blue-500)]/20 hover:border-[var(--color-blue-500)]/40 transition-all duration-300">
                 {/* Category header */}
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="text-[var(--color-accent-blue)] group-hover:text-[var(--color-accent-orange)] transition-colors">
+                  <div className="text-[var(--color-blue-500)] group-hover:text-[var(--color-blue-400)] transition-colors">
                     {category.icon}
                   </div>
-                  <h3 className="font-display text-lg font-semibold text-[var(--color-text-primary)]">
+                  <h3 className="font-mono text-base sm:text-lg font-semibold text-[var(--color-text-primary)]">
                     {category.name}
                   </h3>
                 </div>
@@ -144,8 +136,8 @@ export default function Skills() {
                       key={skill}
                       className="flex items-center gap-3 text-[var(--color-text-secondary)]"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent-blue)] flex-shrink-0" aria-hidden="true" />
-                      <span className="text-sm">{skill}</span>
+                      <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-blue-500)] flex-shrink-0" aria-hidden="true" />
+                      <span className="text-sm font-mono">{skill}</span>
                     </li>
                   ))}
                 </ul>
@@ -156,11 +148,11 @@ export default function Skills() {
 
         {/* Skills connected to projects */}
         <ScrollReveal delay={200} className="mt-16">
-          <div className="p-6 rounded-2xl bg-[var(--color-bg-secondary)] border border-[var(--color-border)]">
-            <h3 className="font-display text-lg font-semibold text-[var(--color-text-primary)] mb-6 text-center">
+          <div className="p-6 rounded-2xl bg-[var(--color-blue-500)]/5 border border-[var(--color-blue-500)]/20">
+            <h3 className="font-mono text-lg font-semibold text-[var(--color-text-primary)] mb-6 text-center">
               Skills in action
             </h3>
-            <p className="text-sm text-[var(--color-text-muted)] text-center mb-6">
+            <p className="text-sm font-mono text-[var(--color-text-muted)] text-center mb-6">
               These skills aren&apos;t just on a list — they&apos;re demonstrated in real projects.
             </p>
 
@@ -168,23 +160,23 @@ export default function Skills() {
               {skillProjectLinks.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-center gap-3 p-3 rounded-lg bg-[var(--color-bg-card)] border border-[var(--color-border)] hover:border-[var(--color-accent-orange)]/30 transition-colors group"
+                  className="flex items-center gap-3 p-3 rounded-lg bg-[var(--color-blue-500)]/5 border border-[var(--color-blue-500)]/20 hover:border-[var(--color-blue-500)]/40 transition-colors group"
                 >
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-[var(--color-accent-blue)]/20 to-[var(--color-accent-orange)]/20 flex items-center justify-center">
-                    <span className="text-[var(--color-accent-blue)] font-mono font-bold text-sm">
+                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[var(--color-blue-500)]/10 border border-[var(--color-blue-500)]/20 flex items-center justify-center">
+                    <span className="text-[var(--color-blue-500)] font-mono font-bold text-sm">
                       {item.skill.charAt(0)}
                     </span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-sm font-medium text-[var(--color-text-primary)] truncate">
+                    <div className="text-sm font-medium font-mono text-[var(--color-text-primary)] truncate">
                       {item.skill}
                     </div>
-                    <div className="text-xs text-[var(--color-text-muted)] truncate">
+                    <div className="text-xs font-mono text-[var(--color-text-muted)] truncate">
                       → {item.project}
                     </div>
                   </div>
                   <svg
-                    className="flex-shrink-0 text-[var(--color-text-muted)] group-hover:text-[var(--color-accent-blue)] transition-colors"
+                    className="flex-shrink-0 text-[var(--color-text-muted)] group-hover:text-[var(--color-blue-500)] transition-colors"
                     width="16"
                     height="16"
                     viewBox="0 0 24 24"

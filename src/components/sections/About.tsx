@@ -63,65 +63,56 @@ const highlights = [
 export default function About() {
   return (
     <section id="about" className="py-24 lg:py-32 relative">
-      {/* Background accent */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-30"
-        style={{
-          background: `radial-gradient(circle at 20% 50%, var(--color-accent-blue)/5 0%, transparent 50%)`,
-        }}
-        aria-hidden="true"
-      />
-
       <div className="container">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <span className="text-[var(--color-accent-blue)] text-sm font-medium tracking-widest uppercase">
+            <span className="text-[var(--color-blue-500)] text-sm font-medium tracking-widest uppercase font-mono">
               About
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mt-3">
+            <h2 className="font-mono text-2xl sm:text-3xl lg:text-4xl font-bold mt-3 text-[var(--color-text-primary)]">
               A builder at heart
             </h2>
-            <div className="gradient-line max-w-24 mx-auto mt-4" aria-hidden="true" />
-            <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto mt-6">
+            <div className="accent-line max-w-24 mx-auto mt-4" aria-hidden="true" />
+            <p className="text-base sm:text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto mt-6 font-mono">
               I combine software engineering, AI, web development, and design to create practical digital products.
             </p>
           </div>
         </ScrollReveal>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           {/* Left column - Story */}
           <ScrollReveal>
-            <div className="space-y-6">
-              <p className="text-lg leading-relaxed text-[var(--color-text-primary)]">
+            <div className="space-y-4 sm:space-y-6">
+              <p className="text-base sm:text-lg leading-relaxed text-[var(--color-text-primary)] font-mono">
                 I&apos;m Victor Ouma — a software developer and digital creator who enjoys building things that work.
               </p>
-              <p className="text-lg leading-relaxed text-[var(--color-text-secondary)]">
+              <p className="text-base sm:text-lg leading-relaxed text-[var(--color-text-secondary)] font-mono">
                 My work spans backend systems in Go, interactive web interfaces with React and TypeScript, and
                 exploring how AI can improve real workflows — especially in construction and business automation.
               </p>
-              <p className="text-lg leading-relaxed text-[var(--color-text-secondary)]">
+              <p className="text-base sm:text-lg leading-relaxed text-[var(--color-text-secondary)] font-mono">
                 I also care about design. A good product needs both solid engineering and thoughtful presentation,
                 and I try to bring both to what I build.
               </p>
-              <p className="text-lg leading-relaxed text-[var(--color-text-secondary)]">
+              <p className="text-base sm:text-lg leading-relaxed text-[var(--color-text-secondary)] font-mono">
                 When I&apos;m not writing code, I&apos;m probably learning something new, sketching interface ideas,
                 or thinking about how to make complex things simpler.
               </p>
 
               {/* Interests grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-4">
                 {interests.map((interest, index) => (
                   <div
                     key={interest.title}
-                    className="p-4 rounded-lg bg-[var(--color-bg-card)] border border-[var(--color-border)] hover:border-[var(--color-accent-blue)]/30 transition-colors group"
+                    className="p-4 rounded-lg bg-[var(--color-blue-500)]/5 border border-[var(--color-blue-500)]/20 hover:border-[var(--color-blue-500)]/40 transition-colors group"
                   >
-                    <div className="text-[var(--color-accent-blue)] group-hover:text-[var(--color-accent-orange)] transition-colors mb-3">
+                    <div className="text-[var(--color-blue-400)] group-hover:text-[var(--color-blue-300)] transition-colors mb-3">
                       {interest.icon}
                     </div>
-                    <h3 className="font-semibold text-[var(--color-text-primary)] mb-1">
+                    <h3 className="font-mono font-semibold text-[var(--color-text-primary)] mb-1">
                       {interest.title}
                     </h3>
-                    <p className="text-sm text-[var(--color-text-secondary)]">
+                    <p className="text-sm text-[var(--color-text-secondary)] font-mono">
                       {interest.description}
                     </p>
                   </div>
@@ -132,21 +123,21 @@ export default function About() {
 
           {/* Right column - Highlights */}
           <ScrollReveal delay={200}>
-            <div className="space-y-6">
-              <h3 className="font-display text-xl font-semibold text-[var(--color-text-primary)]">
+            <div className="space-y-4 sm:space-y-6">
+              <h3 className="font-mono text-lg sm:text-xl font-semibold text-[var(--color-text-primary)]">
                 What defines my approach
               </h3>
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {highlights.map((highlight, index) => (
-                  <div key={index} className="flex gap-4">
+                  <div key={index} className="flex gap-3 sm:gap-4">
                     <div className="flex-shrink-0 mt-1">
-                      <div className="w-6 h-6 rounded-full bg-[var(--color-accent-blue)]/10 border border-[var(--color-accent-blue)]/30 flex items-center justify-center">
+                      <div className="w-6 h-6 rounded-full bg-[var(--color-blue-500)]/10 border border-[var(--color-blue-500)]/30 flex items-center justify-center">
                         <svg
                           width="12"
                           height="12"
                           viewBox="0 0 24 24"
                           fill="none"
-                          stroke="var(--color-accent-blue)"
+                          stroke="var(--color-blue-500)"
                           strokeWidth="3"
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -156,7 +147,7 @@ export default function About() {
                         </svg>
                       </div>
                     </div>
-                    <p className="text-[var(--color-text-secondary)] leading-relaxed">
+                    <p className="text-[var(--color-text-secondary)] leading-relaxed font-mono text-base sm:text-lg">
                       {highlight}
                     </p>
                   </div>
@@ -164,9 +155,9 @@ export default function About() {
               </div>
 
               {/* Technical snippet decoration */}
-              <div className="mt-8 p-4 rounded-lg bg-[var(--color-bg-card)] border border-[var(--color-border)] font-mono text-sm">
+              <div className="mt-6 sm:mt-8 p-4 sm:p-6 rounded-lg bg-[var(--color-blue-500)]/5 border border-[var(--color-blue-500)]/20 font-mono text-sm sm:text-base">
                 <div className="text-[var(--color-text-muted)]">// Portfolio philosophy</div>
-                <div className="text-[var(--color-accent-blue-light)]">
+                <div className="text-[var(--color-blue-400)]">
                   const approach = {`
     `}
                 </div>
@@ -185,3 +176,4 @@ export default function About() {
     </section>
   );
 }
+

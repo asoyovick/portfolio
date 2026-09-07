@@ -46,26 +46,19 @@ const futureFocus = [
 export default function Experience() {
   return (
     <section id="experience" className="py-24 lg:py-32 relative">
-      {/* Background accent */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-20"
-        style={{
-          background: `radial-gradient(circle at 30% 30%, var(--color-accent-orange)/5 0%, transparent 50%)`,
-        }}
-        aria-hidden="true"
-      />
+
 
       <div className="container">
         <ScrollReveal>
           <div className="text-center mb-16">
-            <span className="text-[var(--color-accent-blue)] text-sm font-medium tracking-widest uppercase">
+            <span className="text-[var(--color-blue-500)] text-sm font-medium tracking-widest uppercase font-mono">
               Experience
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mt-3">
+            <h2 className="font-mono text-2xl sm:text-3xl lg:text-4xl font-bold mt-3 text-[var(--color-text-primary)]">
               A journey of growth
             </h2>
-            <div className="gradient-line max-w-24 mx-auto mt-4" aria-hidden="true" />
-            <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto mt-6">
+            <div className="accent-line max-w-24 mx-auto mt-4" aria-hidden="true" />
+            <p className="text-base sm:text-lg font-mono text-[var(--color-text-secondary)] max-w-2xl mx-auto mt-6">
               My path hasn&apos;t been linear — and that&apos;s intentional. Each experience has added something to how I think about building products.
             </p>
           </div>
@@ -92,22 +85,21 @@ export default function Experience() {
                     }`}
                   >
                     {/* Content */}
-                    <div className="sm:w-1/2 sm:pr-12 sm:justify-end">
-                      <div className="p-5 rounded-xl bg-[var(--color-bg-card)] border border-[var(--color-border)] hover:border-[var(--color-accent-blue)]/30 transition-colors group">
+                    <div className="sm:w-1/2 sm:pr-12 sm:justify-end">                        <div className="p-5 rounded-xl bg-[var(--color-blue-500)]/5 border border-[var(--color-blue-500)]/20 hover:border-[var(--color-blue-500)]/40 transition-colors group">
                         {/* Year badge */}
                         <div className="flex items-center gap-2 mb-3">
-                          <span className="text-xs font-mono text-[var(--color-accent-orange)] font-medium">
+                          <span className="text-xs font-mono text-[var(--color-blue-500)] font-medium">
                             {item.year}
                           </span>
-                          <span className="px-2 py-0.5 text-xs rounded-full bg-[var(--color-accent-blue)]/10 text-[var(--color-accent-blue)] border border-[var(--color-accent-blue)]/20">
+                          <span className="px-2 py-0.5 text-xs rounded-full bg-[var(--color-blue-500)]/10 text-[var(--color-blue-500)] border border-[var(--color-blue-500)]/20">
                             {item.category}
                           </span>
                         </div>
 
-                        <h3 className="font-display text-lg font-semibold text-[var(--color-text-primary)] mb-2 group-hover:text-[var(--color-accent-blue-light)] transition-colors">
+                        <h3 className="font-mono text-base font-semibold text-[var(--color-text-primary)] mb-2 group-hover:text-[var(--color-blue-400)] transition-colors">
                           {item.title}
                         </h3>
-                        <p className="text-[var(--color-text-secondary)] text-sm leading-relaxed">
+                        <p className="text-sm font-mono text-[var(--color-text-secondary)] leading-relaxed">
                           {item.description}
                         </p>
                       </div>
@@ -115,8 +107,8 @@ export default function Experience() {
 
                     {/* Timeline dot */}
                     <div className="hidden sm:flex absolute left-1/2 -translate-x-1/2 z-10">
-                      <div className="w-8 h-8 rounded-full bg-[var(--color-bg-primary)] border-2 border-[var(--color-accent-blue)] flex items-center justify-center">
-                        <div className="w-3 h-3 rounded-full bg-[var(--color-accent-blue)]" aria-hidden="true" />
+                      <div className="w-8 h-8 rounded-full bg-[var(--color-bg-primary)] border-2 border-[var(--color-blue-500)] flex items-center justify-center">
+                        <div className="w-3 h-3 rounded-full bg-[var(--color-blue-500)]" aria-hidden="true" />
                       </div>
                     </div>
 
@@ -131,11 +123,7 @@ export default function Experience() {
 
         {/* Future focus */}
         <ScrollReveal delay={200} className="mt-16">
-          <div className="p-8 rounded-2xl bg-gradient-to-br from-[var(--color-bg-secondary)] to-[var(--color-bg-card)] border border-[var(--color-accent-blue)]/20 relative overflow-hidden">
-            {/* Decorative elements */}
-            <div className="absolute top-0 right-0 w-48 h-48 bg-[var(--color-accent-blue)]/5 rounded-full blur-3xl" aria-hidden="true" />
-            <div className="absolute bottom-0 left-0 w-32 h-32 bg-[var(--color-accent-orange)]/5 rounded-full blur-3xl" aria-hidden="true" />
-
+          <div className="p-8 rounded-2xl bg-[var(--color-blue-500)]/5 border border-[var(--color-blue-500)]/20 relative overflow-hidden">
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-4">
                 <svg
@@ -143,7 +131,7 @@ export default function Experience() {
                   height="24"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="var(--color-accent-orange)"
+                  stroke="var(--color-blue-500)"
                   strokeWidth="1.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -163,7 +151,7 @@ export default function Experience() {
                     key={index}
                     className="flex items-start gap-3 text-[var(--color-text-secondary)]"
                   >
-                    <span className="mt-1.5 w-2 h-2 rounded-full bg-[var(--color-accent-orange)] flex-shrink-0" aria-hidden="true" />
+                    <span className="mt-1.5 w-2 h-2 rounded-full bg-[var(--color-blue-500)] flex-shrink-0" aria-hidden="true" />
                     <span className="text-sm">{focus}</span>
                   </li>
                 ))}

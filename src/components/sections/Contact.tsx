@@ -45,32 +45,19 @@ export default function Contact() {
       className="py-24 lg:py-32 relative"
       aria-labelledby="contact-heading"
     >
-      {/* Full background treatment */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[var(--color-bg-primary)] via-[var(--color-bg-secondary)] to-[var(--color-bg-primary)]" aria-hidden="true" />
 
-      {/* Decorative elements */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div
-          className="absolute top-1/4 left-0 w-96 h-96 bg-[var(--color-accent-blue)]/5 rounded-full blur-3xl"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute bottom-1/4 right-0 w-80 h-80 bg-[var(--color-accent-orange)]/5 rounded-full blur-3xl"
-          aria-hidden="true"
-        />
-      </div>
 
       <div className="container relative z-10">
         <ScrollReveal>
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <span className="text-[var(--color-accent-orange)] text-sm font-medium tracking-widest uppercase">
+            <span className="text-[var(--color-blue-500)] text-sm font-medium tracking-widest uppercase font-mono">
               Get In Touch
             </span>
-            <h2 id="contact-heading" className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mt-3 text-[var(--color-text-primary)]">
+            <h2 id="contact-heading" className="font-mono text-2xl sm:text-3xl lg:text-4xl font-bold mt-3 text-[var(--color-text-primary)]">
               Have an idea worth building?
             </h2>
-            <div className="gradient-line max-w-24 mx-auto mt-4" aria-hidden="true" />
-            <p className="text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto mt-6 leading-relaxed">
+            <div className="accent-line max-w-24 mx-auto mt-4" aria-hidden="true" />
+            <p className="text-base sm:text-lg font-mono text-[var(--color-text-secondary)] max-w-2xl mx-auto mt-6 leading-relaxed">
               Whether you have a project in mind, want to collaborate, or just want to say hello — I&apos;d love to hear from you.
             </p>
           </div>
@@ -86,18 +73,18 @@ export default function Contact() {
                   href={method.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-[var(--color-bg-card)] border border-[var(--color-border)] hover:border-[var(--color-accent-blue)]/30 transition-all duration-300 hover:-translate-y-1"
+                  className="group flex flex-col items-center gap-3 p-6 rounded-xl bg-[var(--color-blue-500)]/5 border border-[var(--color-blue-500)]/20 hover:border-[var(--color-blue-500)]/40 transition-all duration-300 hover:-translate-y-1"
                   aria-label={`Contact via ${method.label}`}
                 >
                   <div
-                    className="w-12 h-12 rounded-lg bg-[var(--color-bg-tertiary)] flex items-center justify-center text-[var(--color-text-muted)] group-hover:text-[var(--color-accent-blue)] transition-colors"
+                    className="w-12 h-12 rounded-lg bg-[var(--color-blue-500)]/5 flex items-center justify-center text-[var(--color-text-muted)] group-hover:text-[var(--color-orange-400)] transition-colors"
                   >
                     {method.icon}
                   </div>
-                  <span className="text-sm text-[var(--color-text-muted)] font-medium">
+                  <span className="text-sm font-medium font-mono text-[var(--color-text-muted)]">
                     {method.label}
                   </span>
-                  <span className="text-sm text-[var(--color-text-secondary)] group-hover:text-[var(--color-text-primary)] transition-colors text-center">
+                  <span className="text-sm font-mono text-[var(--color-text-secondary)] group-hover:text-[var(--color-text-primary)] transition-colors text-center">
                     {method.value}
                   </span>
                 </a>
@@ -138,13 +125,13 @@ export default function Contact() {
 
         {/* Closing message */}
         <ScrollReveal delay={200}>
-          <div className="mt-16 p-8 rounded-2xl bg-[var(--color-bg-card)] border border-[var(--color-border)] text-center relative overflow-hidden">
-            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-accent-blue)] to-transparent" aria-hidden="true" />
+          <div className="mt-16 p-8 rounded-2xl bg-[var(--color-blue-500)]/5 border border-[var(--color-blue-500)]/20 text-center relative overflow-hidden">
+            <div className="absolute top-0 left-0 right-0 h-px bg-[var(--color-blue-500)]" aria-hidden="true" />
 
-            <blockquote className="text-xl sm:text-2xl text-[var(--color-text-primary)] font-light italic">
+            <blockquote className="text-lg sm:text-xl text-[var(--color-text-primary)] font-mono italic">
               &ldquo;The best way to predict the future is to build it.&rdquo;
             </blockquote>
-            <p className="text-sm text-[var(--color-text-muted)] mt-4">
+            <p className="text-sm font-mono text-[var(--color-text-muted)] mt-4">
               — And I&apos;m always looking for the next thing to build.
             </p>
           </div>

@@ -82,7 +82,7 @@ export default function Navigation() {
           aria-label="Victor Ouma - Home"
         >
           <span
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold bg-gradient-to-br from-[var(--color-accent-blue)] to-[var(--color-accent-orange)] text-white"
+            className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold bg-[var(--color-blue-500)] text-white"
             aria-hidden="true"
           >
             VO
@@ -100,7 +100,7 @@ export default function Navigation() {
                   href={link.href}
                   className={`relative text-sm font-medium transition-colors duration-200 ${
                     isActive
-                      ? "text-[var(--color-accent-blue)]"
+                      ? "text-[var(--color-blue-500)]"
                       : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
                   }`}
                   aria-current={isActive ? "page" : undefined}
@@ -108,7 +108,7 @@ export default function Navigation() {
                   {link.label}
                   {isActive && (
                     <span
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[var(--color-accent-blue)] rounded-full"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[var(--color-blue-500)] rounded-full"
                       aria-hidden="true"
                     />
                   )}
@@ -128,7 +128,7 @@ export default function Navigation() {
         {/* Mobile Menu Button */}
         <button
           type="button"
-          className="lg:hidden p-2 rounded-lg text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-bg-tertiary)] transition-colors"
+          className="lg:hidden p-2 rounded-lg text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-blue-500)]/5 transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
@@ -164,7 +164,7 @@ export default function Navigation() {
       {/* Mobile Menu */}
       <div
         id="mobile-menu"
-        className={`lg:hidden absolute top-full left-0 right-0 bg-[var(--color-bg-secondary)] border-b border-[var(--color-border)] transition-all duration-300 overflow-hidden ${
+        className={`lg:hidden absolute top-full left-0 right-0 bg-[var(--color-blue-500)]/5 border-b border-[var(--color-blue-500)]/20 transition-all duration-300 overflow-hidden ${
           isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
         aria-hidden={!isOpen}
@@ -178,8 +178,8 @@ export default function Navigation() {
                   href={link.href}
                   className={`flex items-center px-3 py-3 rounded-lg text-base font-medium transition-colors ${
                     isActive
-                      ? "bg-[var(--color-accent-blue)]/10 text-[var(--color-accent-blue)]"
-                      : "text-[var(--color-text-secondary)] hover:bg-[var(--color-bg-tertiary)] hover:text-[var(--color-text-primary)]"
+                      ? "bg-[var(--color-blue-500)]/10 text-[var(--color-blue-500)]"
+                      : "text-[var(--color-text-secondary)] hover:bg-[var(--color-blue-500)]/5 hover:text-[var(--color-text-primary)]"
                   }`}
                   aria-current={isActive ? "page" : undefined}
                 >
