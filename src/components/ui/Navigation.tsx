@@ -70,7 +70,7 @@ export default function Navigation() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-[var(--color-bg-primary)]/95 backdrop-blur-md shadow-lg shadow-black/20"
+          ? "bg-blue-600 shadow-lg shadow-blue-600/30"
           : "bg-transparent"
       }`}
     >
@@ -100,15 +100,15 @@ export default function Navigation() {
                   href={link.href}
                   className={`relative text-sm font-medium transition-colors duration-200 ${
                     isActive
-                      ? "text-[var(--color-blue-500)]"
-                      : "text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)]"
+                      ? "text-white"
+                      : "text-blue-100/80 hover:text-white"
                   }`}
                   aria-current={isActive ? "page" : undefined}
                 >
                   {link.label}
                   {isActive && (
                     <span
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[var(--color-blue-500)] rounded-full"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-white rounded-full"
                       aria-hidden="true"
                     />
                   )}
@@ -178,8 +178,8 @@ export default function Navigation() {
                   href={link.href}
                   className={`flex items-center px-3 py-3 rounded-lg text-base font-medium transition-colors ${
                     isActive
-                      ? "bg-[var(--color-blue-500)]/10 text-[var(--color-blue-500)]"
-                      : "text-[var(--color-text-secondary)] hover:bg-[var(--color-blue-500)]/5 hover:text-[var(--color-text-primary)]"
+                      ? "bg-white/20 text-white"
+                      : "text-blue-100/80 hover:bg-white/10 hover:text-white"
                   }`}
                   aria-current={isActive ? "page" : undefined}
                 >
