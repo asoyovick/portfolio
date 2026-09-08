@@ -33,6 +33,11 @@ Thumbs.db
 # Testing
 coverage/
 
+# Database
+*.db
+*.db-shm
+*.db-wal
+
 # misc
 *.tsbuildinfo
 next-env.d.ts

@@ -1,5 +1,58 @@
+"use client";
+
 import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
+import { useEffect, useState } from "react";
+
+/*
+ * Self-replicating ASCII marquee — mirrors the Python script behaviour:
+ * the name "Victor" (as ASCII art) marches from left to right forever.
+ */
+function SelfReplicatingMarquee() {
+  // ASCII art for "Victor" (standard figlet style, 8 lines tall)
+  const asciiArt = `
+   ████████████   ██████  ██████  ██████  ████████   
+   ██            ██    ██ ██   ██ ██   ██ ██        
+   ██████████    ██    ██ ██████  ██████  ████████   
+   ██            ██    ██ ██   ██ ██   ██ ██        
+   ██            ██    ██ ██   ██ ██   ██ ██        
+   ██            ██    ██ ██   ██ ██   ██ ██        
+   ████████████   ██████  ██████  ██████  ████████   
+   `;
+  const lines = asciiArt.trim().split("\n");
+  const screenWidth = 36;
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setOffset((prev) => (prev + 1) % (screenWidth + lines[0].length));
+    }, 90);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="inline-block whitespace-pre font-mono text-sky-300 tracking-tight leading-none overflow-hidden">
+      {lines.map((line, i) => (
+        <div
+          key={i}
+          className="inline-block whitespace-pre leading-[0.95] sm:leading-[1]"
+          style={{ marginRight: 0 }}
+        >
+          {Array.from({ length: screenWidth }).map((_, s) => (
+            <span
+              key={s}
+              className="inline-block w-3 sm:w-4 align-middle"
+            >
+              {s === offset
+                ? line
+                : "&nbsp;"}
+            </span>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
 
 const terminalLines = [
   { type: "prompt", text: `victor@ubuntu:~$` },
@@ -42,21 +95,10 @@ const terminalLines = [
 
         {/* Terminal content - fills remaining space */}
         <div className="flex-1 p-8 sm:p-12 lg:p-16 bg-black font-mono flex flex-col justify-center">
-          {/* ASCII art logo */}
-          <pre className="text-blue-400 text-lg sm:text-xl md:text-2xl mb-10 lg:mb-12 overflow-x-auto font-mono text-center">{
-  `
-   ████████████████████████████████████████
-   ██                                        ██
-   ██   ██████████  ██████  ██████  ██████  ██
-   ██   ██    ██  ██   ██  ██   ██  ██   ██  ██
-   ██   ██████    ██████  ██████  ██████  ██
-   ██   ██        ██   ██  ██      ██      ██
-   ██   ██        ██   ██  ██      ██      ██
-   ██   ██████████  ██████  ██      ██████  ██
-   ██                                        ██
-   ████████████████████████████████████████
-   `}
-          </pre>
+          {/* Self-replicating ASCII marquee — "Victor" moves left → right */}
+          <div className="mb-10 lg:mb-12 flex justify-center">
+            <SelfReplicatingMarquee />
+          </div>
 
           {/* Terminal output lines */}
           <div className="space-y-2">

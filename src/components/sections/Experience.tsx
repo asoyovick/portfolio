@@ -24,15 +24,9 @@ const timelineItems: TimelineItem[] = [
   },
   {
     year: "2022",
-    title: "Teaching & General Work",
+    title: "Graphics Design and web development",
     description: "Experience in teaching and general work environments, building communication skills and adaptability.",
     category: "Professional",
-  },
-  {
-    year: "Earlier",
-    title: "Supermarket Operations",
-    description: "Working in retail operations, gaining practical experience in customer service and day-to-day business operations.",
-    category: "Operations",
   },
 ];
 

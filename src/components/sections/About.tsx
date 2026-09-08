@@ -52,7 +52,7 @@ const interests = [
 ];
 
 const highlights = [
-  "Computer Science student passionate about solving practical problems with technology",
+  "Software Developer who is passionate about solving practical problems with technology",
   "Strong foundation in Go backend development, including APIs, authentication, and database integration",
   "Experience building full-stack web applications with modern JavaScript, TypeScript, and React",
   "Interest in AI-powered products, construction tech, and business automation",

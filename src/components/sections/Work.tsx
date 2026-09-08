@@ -28,7 +28,6 @@ const projects: Project[] = [
       github: "#",
       demo: "#",
     },
-    featured: true,
     visual: "ai",
   },
   {
