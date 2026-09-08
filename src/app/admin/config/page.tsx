@@ -78,6 +78,12 @@ export default function ConfigPage() {
             >
               Gallery
             </button>
+            <button
+              onClick={() => router.push("/admin/categories")}
+              className="px-4 py-2 rounded-lg border border-[var(--color-border)] text-sm font-mono text-[var(--color-text-secondary)] hover:border-sky-500 hover:text-sky-400 transition-colors"
+            >
+              Categories
+            </button>
             <form action="/api/auth/logout" method="POST">
               <button
                 type="submit"

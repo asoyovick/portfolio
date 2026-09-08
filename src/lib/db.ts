@@ -40,7 +40,21 @@ function initSchema() {
       key TEXT PRIMARY KEY,
       value TEXT NOT NULL
     );
+
+    CREATE TABLE IF NOT EXISTS gallery_categories (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      name TEXT UNIQUE NOT NULL,
+      created_at TEXT DEFAULT (datetime('now'))
+    );
   `);
+
+  // Create default categories if none exist
+  const catCount = d.prepare("SELECT COUNT(*) AS c FROM gallery_categories").get() as { c: number };
+  if (catCount.c === 0) {
+    for (const name of ["Web Application", "Mobile App", "UI Design", "Brand Identity", "Illustration", "Motion"] as const) {
+      d.prepare("INSERT INTO gallery_categories (name) VALUES (?)").run(name);
+    }
+  }
 
   // Create a default admin user if none exists
   const count = d.prepare("SELECT COUNT(*) AS c FROM admin_users").get() as { c: number };
