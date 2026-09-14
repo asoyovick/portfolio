@@ -27,36 +27,34 @@ function GalleryCard({ item }: { item: GalleryItem }) {
       className={`group relative rounded-2xl overflow-hidden ${hasImage ? "bg-black" : "bg-gradient-to-br from-sky-500/10 to-blue-600/10 border border-sky-500/30"} card-hover`}
     >
       {/* Simulated screenshot area */}
-      <div className="aspect-[4/3] sm:aspect-[16/10] relative flex items-center justify-center p-6">
-        {/* Abstract UI mock */}            <div className="w-full h-full flex flex-col gap-3 opacity-70 group-hover:opacity-100 transition-opacity">
-          {item.image_path ? (
-            <img
-              src={item.image_path.startsWith("http") ? item.image_path : `/uploads/${item.image_path}`}
-              alt={item.title}
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <>
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500/60" />
-                <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
-                <div className="w-3 h-3 rounded-full bg-green-500/60" />
+      <div className="aspect-[4/3] sm:aspect-[16/10] relative flex items-center justify-center p-6 overflow-hidden">
+        {item.image_path ? (
+          <img
+            src={item.image_path.startsWith("http") ? item.image_path : (item.image_path.startsWith("uploads/") ? `/${item.image_path}` : `/uploads/${item.image_path}`)}
+            alt={item.title}
+            className="w-full h-full object-cover transition-opacity group-hover:opacity-100"
+          />
+        ) : (
+          <div className="w-full h-full flex flex-col gap-3 opacity-70 group-hover:opacity-100 transition-opacity">
+            <div className="flex gap-2">
+              <div className="w-3 h-3 rounded-full bg-red-500/60" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500/60" />
+              <div className="w-3 h-3 rounded-full bg-green-500/60" />
+            </div>
+            <div className="flex-1 grid grid-cols-3 gap-2">
+              <div className="col-span-2 bg-[var(--color-bg-card)] rounded-lg p-3 border border-[var(--color-border)]">
+                <div className="h-3 w-2/3 rounded bg-[var(--color-bg-tertiary)] mb-2" />
+                <div className="h-3 w-full rounded bg-[var(--color-bg-tertiary)]" />
+                <div className="h-3 w-4/5 rounded bg-[var(--color-bg-tertiary)] mt-2" />
+                <div className="h-3 w-3/5 rounded bg-[var(--color-bg-tertiary)] mt-1" />
               </div>
-              <div className="flex-1 grid grid-cols-3 gap-2">
-                <div className="col-span-2 bg-[var(--color-bg-card)] rounded-lg p-3 border border-[var(--color-border)]">
-                  <div className="h-3 w-2/3 rounded bg-[var(--color-bg-tertiary)] mb-2" />
-                  <div className="h-3 w-full rounded bg-[var(--color-bg-tertiary)]" />
-                  <div className="h-3 w-4/5 rounded bg-[var(--color-bg-tertiary)] mt-2" />
-                  <div className="h-3 w-3/5 rounded bg-[var(--color-bg-tertiary)] mt-1" />
-                </div>
-                <div className="bg-[var(--color-bg-card)] rounded-lg p-3 border border-[var(--color-border)] flex flex-col justify-end">
-                  <div className="h-2 w-full rounded bg-[var(--color-bg-tertiary)]" />
-                  <div className="h-2 w-3/4 rounded bg-[var(--color-bg-tertiary)] mt-1" />
-                </div>
+              <div className="bg-[var(--color-bg-card)] rounded-lg p-3 border border-[var(--color-border)] flex flex-col justify-end">
+                <div className="h-2 w-full rounded bg-[var(--color-bg-tertiary)]" />
+                <div className="h-2 w-3/4 rounded bg-[var(--color-bg-tertiary)] mt-1" />
               </div>
-            </>
-          )}
-        </div>
+            </div>
+          </div>
+        )}
 
         {/* Dots decoration for some cards */}
         {(!item.image_path) && (
