@@ -12,7 +12,7 @@ export default function AdminDashboard() {
     fetch("/api/auth/session")
       .then((res) => res.json())
       .then((data) => setUser(data.user ?? null))
-      .catch(() => router.push("/admin/login"))
+      .catch(() => router.push("/login"))
       .finally(() => setLoading(false));
   }, [router]);
 
@@ -24,8 +24,13 @@ export default function AdminDashboard() {
     );
   }
 
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, [user, router]);
+
   if (!user) {
-    router.push("/admin/login");
     return null;
   }
 

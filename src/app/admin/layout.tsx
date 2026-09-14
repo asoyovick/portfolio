@@ -8,7 +8,7 @@ export default async function AdminLayout({
 }) {
   const admin = await getAdminSession();
   if (!admin) {
-    redirect("/admin/login");
+    redirect("/login");
   }
 
   return <>{children}</>;

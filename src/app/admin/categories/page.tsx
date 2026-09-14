@@ -108,8 +108,7 @@ export default function CategoriesPage() {
 
   return (
     <div className="min-h-screen bg-black p-6">
-      <div className="max-w-2xl mx-auto">
-        {/* Header */}
+      <div className="max-w-2xl mx-auto">{/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-2xl font-mono font-bold text-[var(--color-text-primary)]">
