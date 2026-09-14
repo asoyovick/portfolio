@@ -1,7 +1,7 @@
 import Database from "better-sqlite3";
 import path from "path";
 
-const DB_PATH = path.resolve(process.cwd(), "portfolio.db");
+const DB_PATH = path.resolve(process.cwd(), "data", "app.db");
 
 let db: Database.Database | null = null;
 
