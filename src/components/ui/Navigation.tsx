@@ -15,6 +15,14 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/auth/session")
+      .then((res) => res.ok && res.json())
+      .then((data) => setIsAdmin(!!data?.user))
+      .catch(() => setIsAdmin(false));
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +64,9 @@ export default function Navigation() {
       links.forEach((link) => {
         link.addEventListener("click", (e) => {
           e.preventDefault();
-          const target = document.querySelector((link as HTMLAnchorElement).getAttribute("href") || "");
+          const href = (link as HTMLAnchorElement).getAttribute("href") || "";
+          if (!href || href === "#") return;
+          const target = document.querySelector(href);
           if (target instanceof HTMLElement) {
             target.scrollIntoView({ behavior: "smooth" });
           }
@@ -68,27 +78,39 @@ export default function Navigation() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-blue-600 shadow-lg shadow-blue-600/30"
-          : "bg-transparent"
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-blue-600 shadow-lg shadow-blue-600/20`}
     >
       <nav className="container flex items-center justify-between py-4">
-        {/* Logo */}
-        <Link
-          href="#"
-          className="flex items-center gap-2 text-lg font-semibold no-underline hover:opacity-80 transition-opacity"
-          aria-label="Victor Ouma - Home"
-        >
-          <span
-            className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold bg-[var(--color-blue-500)] text-white"
-            aria-hidden="true"
+        {/* Logo / Admin button */}
+        {isAdmin ? (
+          <button
+            type="button"
+            onClick={() => (window.location.href = "/admin")}
+            className="flex items-center gap-2 text-lg font-semibold no-underline hover:opacity-80 transition-opacity"
+            aria-label="Admin dashboard"
           >
-            VO
+            <span
+              className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold bg-white text-blue-600"
+              aria-hidden="true"
+            >
+              VO
+            </span>
+            <span className="font-display hidden sm:block text-white">Admin</span>
+          </button>
+        ) : (
+          <span
+            className="flex items-center gap-2 text-lg font-semibold"
+            aria-label="Victor Ouma"
+          >
+            <span
+              className="w-8 h-8 rounded-lg flex items-center justify-center text-sm font-bold text-white"
+              aria-hidden="true"
+            >
+              VO
+            </span>
+            <span className="font-display hidden sm:block">Victor Ouma</span>
           </span>
-          <span className="font-display hidden sm:block">Victor Ouma</span>
-        </Link>
+        )}
 
         {/* Desktop Navigation */}
         <ul className="hidden lg:flex items-center gap-8">
@@ -125,10 +147,9 @@ export default function Navigation() {
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
+        {/* Mobile Menu Button */}          <button
           type="button"
-          className="lg:hidden p-2 rounded-lg text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover:bg-[var(--color-blue-500)]/5 transition-colors"
+          className="lg:hidden p-2 rounded-lg text-blue-100/80 hover:text-white hover:bg-blue-500/30 transition-colors"
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
           aria-controls="mobile-menu"
@@ -161,10 +182,9 @@ export default function Navigation() {
         </button>
       </nav>
 
-      {/* Mobile Menu */}
-      <div
+      {/* Mobile Menu */}        <div
         id="mobile-menu"
-        className={`lg:hidden absolute top-full left-0 right-0 bg-[var(--color-blue-500)]/5 border-b border-[var(--color-blue-500)]/20 transition-all duration-300 overflow-hidden ${
+        className={`lg:hidden absolute top-full left-0 right-0 bg-blue-700 border-b border-blue-500/30 transition-all duration-300 overflow-hidden ${
           isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         }`}
         aria-hidden={!isOpen}
@@ -178,8 +198,8 @@ export default function Navigation() {
                   href={link.href}
                   className={`flex items-center px-3 py-3 rounded-lg text-base font-medium transition-colors ${
                     isActive
-                      ? "bg-white/20 text-white"
-                      : "text-blue-100/80 hover:bg-white/10 hover:text-white"
+                      ? "bg-blue-500 text-white"
+                      : "text-blue-100/80 hover:bg-blue-500/30 hover:text-white"
                   }`}
                   aria-current={isActive ? "page" : undefined}
                 >

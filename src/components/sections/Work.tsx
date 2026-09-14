@@ -27,7 +27,7 @@ const projects: Project[] = [
     tags: ["Go", "AI", "Automation", "Construction Tech", "API Design"],
     image: "/vecai.png",
     links: {
-      github: "#",
+      github: "#https://github.com/asoyovick/vecai",
       demo: "#",
     },
     visual: "ai",
@@ -39,6 +39,7 @@ const projects: Project[] = [
     longDescription: "A web application focused on water-related information and environmental technology. Built with a Go backend and a modern frontend, with deployment as part of the project goals.",
     category: "Web Application",
     tags: ["Go", "Web App", "Environmental Tech", "Deployment"],
+    image: "/chemichemi.jpeg",
     links: {
       github: "#",
       demo: "#",
@@ -52,8 +53,9 @@ const projects: Project[] = [
     longDescription: "A web-based forum application built with Go, featuring user authentication, posts, comments, and a SQLite database. Demonstrates practical backend development, HTML templates, and social/forum functionality.",
     category: "Web Application",
     tags: ["Go", "SQLite", "HTML Templates", "Authentication", "CRUD"],
+    image: "/forum.jpeg",
     links: {
-      github: "#",
+      github: "#asoyovick/forum-app",
       demo: "#",
     },
     visual: "web",
@@ -65,8 +67,9 @@ const projects: Project[] = [
     longDescription: "A small template compiler built in Go. Explores string processing, rune handling, parsing techniques, and template rendering — a hands-on look at compiler concepts applied to text templating.",
     category: "Tooling & Libraries",
     tags: ["Go", "String Processing", "Runes", "Parsing", "Templates"],
+    image: "/micro-template.jpeg",
     links: {
-      github: "#",
+      github: "#asoyovick/micro-template-compiler",
     },
     visual: "compiler",
   },
@@ -77,8 +80,9 @@ const projects: Project[] = [
     longDescription: "An algorithmic project implementing stack operations and sorting. Focuses on data structures, optimization, and understanding the trade-offs involved in different sorting approaches.",
     category: "Algorithms",
     tags: ["Go", "Algorithms", "Data Structures", "Stacks", "Sorting"],
+    image: "/push-swap.jpeg",
     links: {
-      github: "#",
+      github: "#asoyovick/push-swap",
     },
     visual: "algorithms",
   },

@@ -31,7 +31,7 @@ function GalleryCard({ item }: { item: GalleryItem }) {
         {/* Abstract UI mock */}            <div className="w-full h-full flex flex-col gap-3 opacity-70 group-hover:opacity-100 transition-opacity">
           {item.image_path ? (
             <img
-              src={`/uploads/${item.image_path}`}
+              src={item.image_path.startsWith("http") ? item.image_path : `/uploads/${item.image_path}`}
               alt={item.title}
               className="w-full h-full object-cover"
             />
