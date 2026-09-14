@@ -8,6 +8,7 @@ interface Project {
   longDescription: string;
   category: string;
   tags: string[];
+  image?: string;
   links: {
     github?: string;
     demo?: string;
@@ -24,6 +25,7 @@ const projects: Project[] = [
     longDescription: "A platform combining AI, construction planning, and automation. It helps with budget-aware decision making, architectural ideas, quantity surveying workflows, material planning, supplier discovery, and price comparison — all aimed at reducing material wastage and connecting construction stakeholders.",
     category: "AI & Automation",
     tags: ["Go", "AI", "Automation", "Construction Tech", "API Design"],
+    image: "/vecai.png",
     links: {
       github: "#",
       demo: "#",
@@ -217,8 +219,18 @@ function ProjectCard({ project }: { project: Project }) {
         <div
           className={`relative ${isFeatured ? "h-64 sm:h-80" : "h-48 sm:h-56"} overflow-hidden`}
         >
-          <div className="absolute inset-0 bg-[var(--color-bg-tertiary)]" />
-          <ProjectVisual type={project.visual} />
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={project.name}
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <>
+              <div className="absolute inset-0 bg-[var(--color-bg-tertiary)]" />
+              <ProjectVisual type={project.visual} />
+            </>
+          )}
 
           {/* Category badge */}
           <div className="absolute top-4 left-4">
