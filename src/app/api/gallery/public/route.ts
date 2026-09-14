@@ -5,17 +5,23 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const category = searchParams.get("category");
 
-  const db = getDb();
+  const db = await getDb();
   let query = "SELECT id, title, category, image_path, featured FROM gallery_photos";
   const params: (string | undefined)[] = [];
 
   if (category) {
-    query += " WHERE category = ? ORDER BY order_index ASC, id ASC";
+    query += " WHERE category = $1 ORDER BY order_index ASC, id ASC";
     params.push(category);
   } else {
     query += " ORDER BY order_index ASC, id ASC";
   }
 
-  const photos = db.prepare(query).all(...params);
+  const photos = await db.query<{
+    id: number;
+    title: string;
+    category: string;
+    image_path: string;
+    featured: number;
+  }>(query, params.length > 0 ? params as unknown[] : undefined);
   return NextResponse.json(photos);
 }

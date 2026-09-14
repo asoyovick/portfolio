@@ -5,10 +5,12 @@ import bcrypt from "bcryptjs";
 export async function POST(req: NextRequest) {
   const { username, password } = await req.json();
 
-  const db = getDb();
-  const user = db
-    .prepare("SELECT * FROM admin_users WHERE username = ?")
-    .get(username) as { id: number; username: string; password_hash: string } | undefined;
+  const db = await getDb();
+  const user = await db.queryOne<{
+    id: number;
+    username: string;
+    password_hash: string;
+  }>("SELECT * FROM admin_users WHERE username = $1", [username]);
 
   if (!user) {
     return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
@@ -25,7 +27,7 @@ export async function POST(req: NextRequest) {
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
     path: "/",
-    maxAge: 60 * 60 * 24 * 7, // 7 days
+    maxAge: 60 * 60 * 24 * 7,
   });
 
   return response;

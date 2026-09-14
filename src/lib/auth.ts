@@ -6,10 +6,11 @@ export async function getAdminSession(): Promise<{ id: number; username: string 
   const sessionId = cookieStore.get("admin_session")?.value;
   if (!sessionId) return null;
 
-  const db = getDb();
-  const user = db
-    .prepare("SELECT id, username FROM admin_users WHERE id = ?")
-    .get(Number(sessionId)) as { id: number; username: string } | undefined;
+  const db = await getDb();
+  const user = await db.queryOne<{ id: number; username: string }>(
+    "SELECT id, username FROM admin_users WHERE id = $1",
+    [Number(sessionId)]
+  );
 
   return user ?? null;
 }

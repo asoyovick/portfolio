@@ -4,30 +4,42 @@ import { requireAdmin } from "@/lib/auth";
 
 export async function GET() {
   await requireAdmin();
-  const db = getDb();
-  const photos = db
-    .prepare("SELECT * FROM gallery_photos ORDER BY order_index ASC, id ASC")
-    .all();
+  const db = await getDb();
+  const photos = await db.query<{
+    id: number;
+    title: string;
+    category: string;
+    image_path: string;
+    order_index: number;
+    featured: number;
+    created_at: string;
+  }>("SELECT * FROM gallery_photos ORDER BY order_index ASC, id ASC");
   return NextResponse.json(photos);
 }
 
 export async function POST(req: NextRequest) {
-  const admin = await requireAdmin();
-  const db = getDb();
+  await requireAdmin();
+  const db = await getDb();
 
-  const maxOrder = db
-    .prepare("SELECT MAX(order_index) AS m FROM gallery_photos")
-    .get() as { m: number | null };
+  const { title, category, image_path, featured } = await req.json();
 
-  const body = await req.json();
-  const { title, category, image_path, featured } = body;
-
-  const result = db
-    .prepare(
-      "INSERT INTO gallery_photos (title, category, image_path, order_index, featured) VALUES (?, ?, ?, ?, ?)",
+  const maxOrder = (
+    await db.query<{ m: number | null }>(
+      "SELECT MAX(order_index) AS m FROM gallery_photos"
     )
-    .run(title, category, image_path, (maxOrder.m ?? -1) + 1, featured ? 1 : 0);
+  )[0]?.m ?? -1;
 
-  const photo = db.prepare("SELECT * FROM gallery_photos WHERE id = ?").get(result.lastInsertRowid);
+  const result = await db.mutate(
+    `INSERT INTO gallery_photos (title, category, image_path, order_index, featured)
+     VALUES ($1, $2, $3, $4, $5)
+     RETURNING id`,
+    [title, category, image_path, maxOrder + 1, featured ? 1 : 0]
+  );
+
+  const photo = await db.queryOne(
+    "SELECT * FROM gallery_photos WHERE id = $1",
+    [result.lastInsertId]
+  );
+
   return NextResponse.json(photo, { status: 201 });
 }

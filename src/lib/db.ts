@@ -1,39 +1,63 @@
-import Database from "better-sqlite3";
-import path from "path";
+import pg from "pg";
+import bcrypt from "bcryptjs";
 
-const DB_PATH = path.resolve(process.cwd(), "data", "app.db");
+const { Pool } = pg;
 
-let db: Database.Database | null = null;
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  max: 10,
+  idleTimeoutMillis: 30000,
+  connectionTimeoutMillis: 2000,
+});
 
-export function getDb(): Database.Database {
-  if (!db) {
-    db = new Database(DB_PATH);
-    db.pragma("journal_mode = WAL");
-    db.pragma("foreign_keys = ON");
-    initSchema();
-  }
-  return db;
+pool.on("error", (err) => {
+  console.error("Unexpected error on idle Postgres client", err);
+});
+
+export async function query<T = unknown>(
+  text: string,
+  params?: unknown[]
+): Promise<T[]> {
+  const result = await pool.query(text, params);
+  return result.rows as T[];
 }
 
-function initSchema() {
-  const d = db!;
+export async function queryOne<T = unknown>(
+  text: string,
+  params?: unknown[]
+): Promise<T | null> {
+  const result = await pool.query(text, params);
+  return (result.rows[0] ?? null) as T;
+}
 
-  d.exec(`
+export async function mutate(
+  text: string,
+  params?: unknown[]
+): Promise<{ rowCount: number; lastInsertId?: number }> {
+  const result = await pool.query(text, params);
+  return {
+    rowCount: result.rowCount ?? 0,
+    lastInsertId: result.rows[0]?.id as number | undefined,
+  };
+}
+
+export async function initSchema() {
+  await pool.query(`
     CREATE TABLE IF NOT EXISTS admin_users (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id SERIAL PRIMARY KEY,
       username TEXT UNIQUE NOT NULL,
       password_hash TEXT NOT NULL,
-      created_at TEXT DEFAULT (datetime('now'))
+      created_at TIMESTAMPTZ DEFAULT NOW()
     );
 
     CREATE TABLE IF NOT EXISTS gallery_photos (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id SERIAL PRIMARY KEY,
       title TEXT NOT NULL,
       category TEXT NOT NULL,
       image_path TEXT NOT NULL,
       order_index INTEGER NOT NULL DEFAULT 0,
       featured INTEGER NOT NULL DEFAULT 0,
-      created_at TEXT DEFAULT (datetime('now'))
+      created_at TIMESTAMPTZ DEFAULT NOW()
     );
 
     CREATE TABLE IF NOT EXISTS site_config (
@@ -42,26 +66,46 @@ function initSchema() {
     );
 
     CREATE TABLE IF NOT EXISTS gallery_categories (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      id SERIAL PRIMARY KEY,
       name TEXT UNIQUE NOT NULL,
-      created_at TEXT DEFAULT (datetime('now'))
+      created_at TIMESTAMPTZ DEFAULT NOW()
     );
   `);
 
-  // Create default categories if none exist
-  const catCount = d.prepare("SELECT COUNT(*) AS c FROM gallery_categories").get() as { c: number };
-  if (catCount.c === 0) {
-    for (const name of ["Web Application", "Mobile App", "UI Design", "Brand Identity", "Illustration", "Motion"] as const) {
-      d.prepare("INSERT INTO gallery_categories (name) VALUES (?)").run(name);
+  const catCount = (
+    await query<{ c: number }>("SELECT COUNT(*) AS c FROM gallery_categories")
+  )[0]?.c ?? 0;
+  if (catCount === 0) {
+    for (const name of [
+      "Web Application",
+      "Mobile App",
+      "UI Design",
+      "Brand Identity",
+      "Illustration",
+      "Motion",
+    ] as const) {
+      await mutate("INSERT INTO gallery_categories (name) VALUES ($1)", [name]);
     }
   }
 
-  // Create a default admin user if none exists
-  const count = d.prepare("SELECT COUNT(*) AS c FROM admin_users").get() as { c: number };
-  if (count.c === 0) {
-    // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const bcrypt = require("bcryptjs");
+  const userCount = (
+    await query<{ c: number }>("SELECT COUNT(*) AS c FROM admin_users")
+  )[0]?.c ?? 0;
+  if (userCount === 0) {
     const hash = bcrypt.hashSync("admin123", 10);
-    d.prepare("INSERT INTO admin_users (username, password_hash) VALUES (?, ?)").run("admin", hash);
+    await mutate(
+      "INSERT INTO admin_users (username, password_hash) VALUES ($1, $2)",
+      ["admin", hash]
+    );
   }
+}
+
+export async function getDb() {
+  // Ensure schema exists on first call
+  await initSchema();
+  return {
+    query: <T = unknown>(text: string, params?: unknown[]) => query<T>(text, params),
+    queryOne: <T = unknown>(text: string, params?: unknown[]) => queryOne<T>(text, params),
+    mutate: (text: string, params?: unknown[]) => mutate(text, params),
+  };
 }

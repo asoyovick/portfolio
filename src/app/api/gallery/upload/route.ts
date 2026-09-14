@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getDb } from "@/lib/db";
 import { requireAdmin } from "@/lib/auth";
 import fs from "fs";
 import path from "path";
@@ -12,12 +11,10 @@ export async function POST(req: NextRequest) {
   const file = formData.get("file") as File | null;
   if (!file) return NextResponse.json({ error: "No file" }, { status: 400 });
 
-  // Validate type
   if (!file.type.startsWith("image/")) {
     return NextResponse.json({ error: "Invalid file type" }, { status: 400 });
   }
 
-  // Save file
   const uploadsDir = path.resolve(process.cwd(), "public", "uploads");
   fs.mkdirSync(uploadsDir, { recursive: true });
 
