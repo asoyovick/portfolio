@@ -88,16 +88,15 @@ export async function initSchema() {
     }
   }
 
-  const userCount = (
-    await query<{ c: number }>("SELECT COUNT(*) AS c FROM admin_users")
-  )[0]?.c ?? 0;
-  if (userCount === 0) {
-    const hash = bcrypt.hashSync("Victoradmin123", 10);
-    await mutate(
-      "INSERT INTO admin_users (username, password_hash) VALUES ($1, $2)",
-      ["asoyohvick", hash]
-    );
-  }
+  // Ensure a default admin user exists.
+  // Remove any pre-existing admin_users rows so the seed is idempotent
+  // (e.g. a previous run that inserted a plain-text or misconfigured user).
+  await mutate("DELETE FROM admin_users");
+  const hash = bcrypt.hashSync("Vickadmin@20", 10);
+  await mutate(
+    "INSERT INTO admin_users (username, password_hash) VALUES ($1, $2)",
+    ["asoyoh", hash]
+  );
 }
 
 export async function getDb() {

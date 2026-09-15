@@ -92,7 +92,7 @@ export default function AdminLoginPage() {
         </div>
 
         <p className="mt-6 text-center text-xs font-mono text-[var(--color-text-muted)]">
-          Default: <span className="text-sky-400">admin</span> / <span className="text-sky-400">admin123</span>
+          Default: <span className="text-sky-400">asoyoh</span> / <span className="text-sky-400">admin123</span>
         </p>
       </form>
     </div>
