@@ -92,10 +92,10 @@ export async function initSchema() {
     await query<{ c: number }>("SELECT COUNT(*) AS c FROM admin_users")
   )[0]?.c ?? 0;
   if (userCount === 0) {
-    const hash = bcrypt.hashSync("admin123", 10);
+    const hash = bcrypt.hashSync("Victoradmin123", 10);
     await mutate(
       "INSERT INTO admin_users (username, password_hash) VALUES ($1, $2)",
-      ["admin", hash]
+      ["asoyohvick", hash]
     );
   }
 }
