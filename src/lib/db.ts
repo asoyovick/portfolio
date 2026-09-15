@@ -42,6 +42,7 @@ export async function mutate(
 }
 
 export async function initSchema() {
+  console.log("[initSchema] Starting schema init...");
   await pool.query(`
     CREATE TABLE IF NOT EXISTS admin_users (
       id SERIAL PRIMARY KEY,
@@ -88,15 +89,17 @@ export async function initSchema() {
     }
   }
 
-  // Ensure a default admin user exists.
-  // Remove any pre-existing admin_users rows so the seed is idempotent
-  // (e.g. a previous run that inserted a plain-text or misconfigured user).
-  await mutate("DELETE FROM admin_users");
+  // Ensure the default admin user exists with the correct credentials.
+  // Uses UPSERT so a pre-existing row (e.g. from a previous deploy with
+  // wrong credentials) is updated rather than deleted.
   const hash = bcrypt.hashSync("Vickadmin@20", 10);
   await mutate(
-    "INSERT INTO admin_users (username, password_hash) VALUES ($1, $2)",
+    `INSERT INTO admin_users (username, password_hash)
+     VALUES ($1, $2)
+     ON CONFLICT (username) DO UPDATE SET password_hash = $2`,
     ["asoyoh", hash]
   );
+  console.log("[initSchema] Default admin user ensured: asoyoh / Vickadmin@20");
 }
 
 export async function getDb() {
