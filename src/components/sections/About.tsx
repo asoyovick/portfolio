@@ -1,179 +1,89 @@
-import ScrollReveal from "@/components/ui/ScrollReveal";
+import Image from "next/image";
 import Link from "next/link";
-
-const interests = [
-  {
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <polyline points="16 18 22 12 16 6" />
-        <polyline points="8 6 2 12 8 18" />
-      </svg>
-    ),
-    title: "Software Development",
-    description: "Building practical applications, APIs, and backend systems with Go, JavaScript, and TypeScript."
-  },
-  {
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M12 2a4 4 0 0 1 4 4c0 2-2 4-4 4s-4-2-4-4a4 4 0 0 1 4-4z" />
-        <path d="M12 2v10" />
-        <path d="M8 12h8" />
-        <circle cx="12" cy="18" r="2" />
-      </svg>
-    ),
-    title: "AI Solutions",
-    description: "Exploring AI-powered workflows, agents, and practical automation for real-world problems."
-  },
-  {
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-        <line x1="8" y1="21" x2="16" y2="21" />
-        <line x1="12" y1="17" x2="12" y2="21" />
-      </svg>
-    ),
-    title: "Web Development",
-    description: "Creating responsive, accessible websites and applications that work well across devices."
-  },
-  {
-    icon: (
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10" />
-        <circle cx="12" cy="12" r="4" />
-        <line x1="21" y1="12" x2="17" y2="12" />
-        <line x1="3" y1="12" x2="7" y2="12" />
-        <line x1="12" y1="21" x2="12" y2="17" />
-        <line x1="12" y1="7" x2="12" y2="3" />
-      </svg>
-    ),
-    title: "Digital Design",
-    description: "Combining visual design, branding, and technology to create cohesive digital experiences."
-  },
-];
-
-const highlights = [
-  "Software Developer who is passionate about solving practical problems with technology",
-  "Strong foundation in Go backend development, including APIs, authentication, and database integration",
-  "Experience building full-stack web applications with modern JavaScript, TypeScript, and React",
-  "Interest in AI-powered products, construction tech, and business automation",
-  "Visual design skills complementing technical work — UI/UX, branding, and digital marketing",
-  "Practical DevOps experience with Git, Docker, Linux, and deployment workflows",
-];
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import { Arrow } from "@/components/ui/primitives";
+import { aboutTimeline } from "@/lib/content";
 
 export default function About() {
   return (
-    <section id="about" className="py-24 lg:py-32 relative">
-      <div className="container">
-        <ScrollReveal>
-          <div className="text-center mb-16">
-            <span className="text-[var(--color-blue-500)] text-sm font-medium tracking-widest uppercase font-mono">
-              About
-            </span>
-            <h2 className="font-mono text-2xl sm:text-3xl lg:text-4xl font-bold mt-3 text-[var(--color-text-primary)]">
-              A builder at heart
-            </h2>
-            <div className="accent-line max-w-24 mx-auto mt-4" aria-hidden="true" />
-            <p className="text-base sm:text-lg text-[var(--color-text-secondary)] max-w-2xl mx-auto mt-6 font-mono">
-              I combine software engineering, AI, web development, and design to create practical digital products.
+    <section
+      id="about"
+      aria-labelledby="about-heading"
+      className="light section-light relative"
+    >
+      <div className="wrap-wide py-24 md:py-32 lg:py-36">
+        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+          {/* Photograph */}
+          <ScrollReveal mode="clip" className="order-2 lg:order-1 lg:sticky lg:top-24">
+            <div className="relative aspect-[4/5] overflow-hidden">
+              <Image
+                src="/images/about.jpg"
+                alt="Portrait of Victor Ouma"
+                fill
+                sizes="(max-width: 1023px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+            <p className="meta mt-4">
+              Victor Ouma — developer and builder
             </p>
+          </ScrollReveal>
+
+          {/* Copy + timeline */}
+          <div className="order-1 lg:order-2">
+            <ScrollReveal>
+              <p className="label">About me</p>
+              <h2
+                id="about-heading"
+                className="display-lg text-[var(--color-paper-text)] mt-6 mb-8"
+              >
+                I&apos;m <span className="serif italic font-medium">Victor.</span>
+              </h2>
+              <p className="text-lg md:text-xl leading-relaxed text-[var(--color-paper-text)] max-w-xl mb-10">
+                I&apos;m a developer and builder interested in the intersection
+                of software, AI, backend engineering and cybersecurity. I&apos;m
+                learning by building real systems, experimenting with ideas, and
+                constantly trying to understand how technology can solve
+                problems beyond the screen.
+              </p>
+              <Link
+                href="#drives"
+                className="u-link inline-flex items-center gap-2 text-sm font-semibold tracking-[0.06em] text-[var(--color-paper-text)] mb-16 md:mb-20"
+              >
+                More about me
+                <Arrow />
+              </Link>
+            </ScrollReveal>
+
+            {/* Timeline */}
+            <ScrollReveal delay={100}>
+              <ol
+                className="relative border-l border-[var(--color-paper-line)] ml-1 space-y-8"
+                aria-label="Journey"
+              >
+                {aboutTimeline.map((item, i) => (
+                  <li key={item.title} className="relative pl-8">
+                    <span
+                      aria-hidden="true"
+                      className={`absolute -left-[5px] top-1.5 w-2.5 h-2.5 rounded-full border-2 ${
+                        i === aboutTimeline.length - 1
+                          ? "bg-[var(--color-accent)] border-[var(--color-accent)]"
+                          : "bg-[var(--color-paper)] border-[var(--color-paper-dim)]"
+                      }`}
+                    />
+                    <p className="text-[15px] font-semibold text-[var(--color-paper-text)]">
+                      {item.title}
+                    </p>
+                    <p className="text-sm text-[var(--color-paper-mid)] mt-0.5">
+                      {item.detail}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+            </ScrollReveal>
           </div>
-        </ScrollReveal>
-
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Left column - Story */}
-          <ScrollReveal>
-            <div className="space-y-4 sm:space-y-6">
-              <p className="text-base sm:text-lg leading-relaxed text-[var(--color-text-primary)] font-mono">
-                I&apos;m Victor Ouma — a software developer and digital creator who enjoys building things that work.
-              </p>
-              <p className="text-base sm:text-lg leading-relaxed text-[var(--color-text-secondary)] font-mono">
-                My work spans backend systems in Go, interactive web interfaces with React and TypeScript, and
-                exploring how AI can improve real workflows — especially in construction and business automation.
-              </p>
-              <p className="text-base sm:text-lg leading-relaxed text-[var(--color-text-secondary)] font-mono">
-                I also care about design. A good product needs both solid engineering and thoughtful presentation,
-                and I try to bring both to what I build.
-              </p>
-              <p className="text-base sm:text-lg leading-relaxed text-[var(--color-text-secondary)] font-mono">
-                When I&apos;m not writing code, I&apos;m probably learning something new, sketching interface ideas,
-                or thinking about how to make complex things simpler.
-              </p>
-
-              {/* Interests grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 pt-4">
-                {interests.map((interest, index) => (
-                  <div
-                    key={interest.title}
-                    className="p-4 rounded-lg bg-[var(--color-blue-500)]/5 border border-[var(--color-blue-500)]/20 hover:border-[var(--color-blue-500)]/40 transition-colors group"
-                  >
-                    <div className="text-[var(--color-blue-400)] group-hover:text-[var(--color-blue-300)] transition-colors mb-3">
-                      {interest.icon}
-                    </div>
-                    <h3 className="font-mono font-semibold text-[var(--color-text-primary)] mb-1">
-                      {interest.title}
-                    </h3>
-                    <p className="text-sm text-[var(--color-text-secondary)] font-mono">
-                      {interest.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </ScrollReveal>
-
-          {/* Right column - Highlights */}
-          <ScrollReveal delay={200}>
-            <div className="space-y-4 sm:space-y-6">
-              <h3 className="font-mono text-lg sm:text-xl font-semibold text-[var(--color-text-primary)]">
-                What defines my approach
-              </h3>
-              <div className="space-y-3 sm:space-y-4">
-                {highlights.map((highlight, index) => (
-                  <div key={index} className="flex gap-3 sm:gap-4">
-                    <div className="flex-shrink-0 mt-1">
-                      <div className="w-6 h-6 rounded-full bg-[var(--color-blue-500)]/10 border border-[var(--color-blue-500)]/30 flex items-center justify-center">
-                        <svg
-                          width="12"
-                          height="12"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="var(--color-blue-500)"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          aria-hidden="true"
-                        >
-                          <polyline points="20 6 9 17 4 12" />
-                        </svg>
-                      </div>
-                    </div>
-                    <p className="text-[var(--color-text-secondary)] leading-relaxed font-mono text-base sm:text-lg">
-                      {highlight}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Technical snippet decoration */}
-              <div className="mt-6 sm:mt-8 p-4 sm:p-6 rounded-lg bg-[var(--color-blue-500)]/5 border border-[var(--color-blue-500)]/20 font-mono text-sm sm:text-base">
-                <div className="text-[var(--color-text-muted)]">// Portfolio philosophy</div>
-                <div className="text-[var(--color-blue-400)]">
-                  const approach = {`
-    `}
-                </div>
-                <div className="text-[var(--color-text-primary)] pl-4">
-                  {`
-  design + engineering,
-  practicality over hype,
-  build → learn → improve
-      `}
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
         </div>
       </div>
     </section>
   );
 }
-
