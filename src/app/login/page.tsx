@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+
 export default function AdminLoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -36,24 +37,32 @@ export default function AdminLoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black">
+    <main className="min-h-screen flex items-center justify-center bg-[var(--color-ink-deep)] px-5">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-sm p-8 rounded-2xl border border-sky-500/20 bg-[var(--color-bg-secondary)] shadow-lg shadow-sky-500/5"
+        className="w-full max-w-sm py-10"
+        aria-label="Admin login"
       >
-        <h1 className="text-xl font-mono font-semibold text-sky-300 mb-6 text-center">
-          Admin Login
+        <p className="label mb-6">Victor Ouma — Admin</p>
+        <h1 className="display-md text-[var(--color-ink-hi)] mb-10">
+          Sign in
         </h1>
 
         {error && (
-          <div className="mb-4 p-3 rounded-lg bg-red-500/10 border border-red-500/20 text-red-400 text-sm text-center">
+          <div
+            className="mb-6 px-4 py-3 border border-red-500/30 bg-red-500/10 text-red-300 text-sm"
+            role="alert"
+          >
             {error}
           </div>
         )}
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           <div>
-            <label htmlFor="username" className="block text-sm font-mono text-[var(--color-text-secondary)] mb-1.5">
+            <label
+              htmlFor="username"
+              className="block meta mb-2"
+            >
               Username
             </label>
             <input
@@ -61,14 +70,14 @@ export default function AdminLoginPage() {
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-lg bg-black border border-[var(--color-border)] text-[var(--color-text-primary)] font-mono placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-sky-500 transition-colors"
-              placeholder="admin"
+              autoComplete="username"
+              className="w-full bg-transparent border-b border-[var(--color-ink-hair)] focus:border-[var(--color-accent-soft)] text-[var(--color-ink-hi)] py-2.5 text-base outline-none transition-colors"
               required
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-mono text-[var(--color-text-secondary)] mb-1.5">
+            <label htmlFor="password" className="block meta mb-2">
               Password
             </label>
             <input
@@ -76,8 +85,8 @@ export default function AdminLoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-lg bg-black border border-[var(--color-border)] text-[var(--color-text-primary)] font-mono placeholder:text-[var(--color-text-muted)] focus:outline-none focus:border-sky-500 transition-colors"
-              placeholder="••••••••"
+              autoComplete="current-password"
+              className="w-full bg-transparent border-b border-[var(--color-ink-hair)] focus:border-[var(--color-accent-soft)] text-[var(--color-ink-hi)] py-2.5 text-base outline-none transition-colors"
               required
             />
           </div>
@@ -85,16 +94,12 @@ export default function AdminLoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full btn btn-primary text-sm py-2.5 mt-2"
+            className="btn btn--solid w-full mt-2 disabled:opacity-50"
           >
-            {loading ? "Signing in..." : "Sign in"}
+            {loading ? "Signing in…" : "Sign in"}
           </button>
         </div>
-
-        <p className="mt-6 text-center text-xs font-mono text-[var(--color-text-muted)]">
-          Default: <span className="text-sky-400">asoyoh</span> / <span className="text-sky-400">admin123</span>
-        </p>
       </form>
-    </div>
+    </main>
   );
 }
