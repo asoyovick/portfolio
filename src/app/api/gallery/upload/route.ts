@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/auth";
-import fs from "fs";
-import path from "path";
+import { PutObjectCommand } from "@aws-sdk/client-s3";
+import { r2, R2_BUCKET, R2_PUBLIC_URL } from "@/lib/r2";
 import { v4 as uuidv4 } from "uuid";
+import path from "path";
 
 export async function POST(req: NextRequest) {
   await requireAdmin();
@@ -15,17 +16,21 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid file type" }, { status: 400 });
   }
 
-  const uploadsDir = path.resolve(process.cwd(), "public", "uploads");
-  fs.mkdirSync(uploadsDir, { recursive: true });
-
   const ext = path.extname(file.name) || ".png";
-  const filename = `${uuidv4()}${ext}`;
-  const filePath = path.join(uploadsDir, filename);
+  const key = `gallery/${uuidv4()}${ext}`;
 
   const buffer = Buffer.from(await file.arrayBuffer());
-  fs.writeFileSync(filePath, buffer);
 
-  const imagePath = `uploads/${filename}`;
+  await r2.send(
+    new PutObjectCommand({
+      Bucket: R2_BUCKET,
+      Key: key,
+      Body: buffer,
+      ContentType: file.type,
+    })
+  );
 
-  return NextResponse.json({ path: imagePath });
+  const imageUrl = `${R2_PUBLIC_URL}/${key}`;
+
+  return NextResponse.json({ path: imageUrl });
 }

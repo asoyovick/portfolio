@@ -17,10 +17,6 @@ export default function CategoriesPage() {
   const [deleting, setDeleting] = useState<number | null>(null);
   const router = useRouter();
 
-  useEffect(() => {
-    fetchCategories();
-  }, []);
-
   async function fetchCategories() {
     try {
       const res = await fetch("/api/gallery/categories");
@@ -32,6 +28,24 @@ export default function CategoriesPage() {
       setLoading(false);
     }
   }
+
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch("/api/gallery/categories");
+        const data = await res.json();
+        if (!cancelled) setCategories(data);
+      } catch {
+        console.error("Failed to load categories");
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   async function addCategory() {
     if (!newName.trim()) {

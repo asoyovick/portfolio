@@ -18,20 +18,22 @@ export default function ConfigPage() {
   const router = useRouter();
 
   useEffect(() => {
-    fetchConfig();
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch("/api/config");
+        const data = await res.json();
+        if (!cancelled) setConfig(data);
+      } catch {
+        console.error("Failed to load config");
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, []);
-
-  async function fetchConfig() {
-    try {
-      const res = await fetch("/api/config");
-      const data = await res.json();
-      setConfig(data);
-    } catch {
-      console.error("Failed to load config");
-    } finally {
-      setLoading(false);
-    }
-  }
 
   async function handleSave() {
     setSaving(true);

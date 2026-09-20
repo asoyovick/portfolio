@@ -487,7 +487,9 @@ export default function GalleryManagerPage() {
                   src={
                     editingPhoto.image_path.startsWith("http")
                       ? editingPhoto.image_path
-                      : `/uploads/${editingPhoto.image_path}`
+                      : editingPhoto.image_path.startsWith("uploads/")
+                        ? `/${editingPhoto.image_path}`
+                        : `/uploads/${editingPhoto.image_path}`
                   }
                   alt={editingPhoto.title}
                   className="w-full h-full object-cover"
@@ -627,7 +629,9 @@ function PhotoCard({
           src={
             photo.image_path.startsWith("http")
               ? photo.image_path
-              : `/uploads/${photo.image_path}`
+              : photo.image_path.startsWith("uploads/")
+                ? `/${photo.image_path}`
+                : `/uploads/${photo.image_path}`
           }
           alt={photo.title}
           className="w-full h-full object-cover"
