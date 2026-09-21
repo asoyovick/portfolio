@@ -12,7 +12,6 @@ export default function Thinking() {
       <div className="wrap py-24 md:py-32 lg:py-36">
         <div className="grid lg:grid-cols-12 gap-12 lg:gap-8">
           <ScrollReveal className="lg:col-span-7">
-            <p className="label">Thinking in public</p>
             <h2
               id="thinking-heading"
               className="display-lg mt-6 mb-8 text-[var(--color-ink-hi)]"
@@ -55,7 +54,6 @@ export default function Thinking() {
                 </li>
               ))}
             </ul>
-            <p className="meta mt-4">Notes in progress — writing soon</p>
           </ScrollReveal>
         </div>
       </div>
