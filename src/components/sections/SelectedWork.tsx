@@ -92,8 +92,7 @@ export default function SelectedWork() {
     >
       <div className="wrap-wide py-24 md:py-32 lg:py-36">
         <ScrollReveal className="flex items-end justify-between gap-8 mb-14 md:mb-20">
-          <div>
-            <p className="label">Selected work</p>
+          <div>   
             <h2
               id="work-heading"
               className="display-lg mt-6 text-[var(--color-ink-hi)]"
@@ -101,7 +100,6 @@ export default function SelectedWork() {
               Selected <span className="serif italic font-medium">work.</span>
             </h2>
           </div>
-          <p className="meta hidden md:block pb-2">Archive — Go · AI · Systems</p>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16 md:gap-y-24">
