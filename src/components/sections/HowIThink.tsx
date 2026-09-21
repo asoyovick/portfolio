@@ -19,8 +19,7 @@ export default function HowIThink() {
       <div className="wrap py-24 md:py-32 lg:py-36">
         <div className="grid lg:grid-cols-12 gap-10 mb-16 md:mb-24">
           <ScrollReveal className="lg:col-span-6">
-            <p className="label">How I think</p>
-            <h2
+             <h2
               id="how-i-think-heading"
               className="display-lg text-[var(--color-paper-text)] mt-6"
             >
@@ -67,12 +66,6 @@ export default function HowIThink() {
             </ScrollReveal>
           ))}
         </ol>
-
-        <ScrollReveal delay={150} className="mt-10 md:mt-14">
-          <p className="font-mono text-[11px] tracking-[0.16em] uppercase text-[var(--color-paper-dim)]">
-            Problem → Research → Design → Build → Improve
-          </p>
-        </ScrollReveal>
       </div>
     </section>
   );
