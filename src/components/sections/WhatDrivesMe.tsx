@@ -30,8 +30,7 @@ export default function WhatDrivesMe() {
       <div className="wrap relative z-10 py-28 md:py-40 lg:py-48">
         <div className="max-w-2xl">
           <ScrollReveal>
-            <p className="label">What drives me</p>
-            <h2
+           <h2
               id="drives-heading"
               className="display-xl mt-6 mb-8 text-[var(--color-ink-hi)]"
             >
