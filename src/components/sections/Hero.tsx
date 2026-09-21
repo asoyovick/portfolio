@@ -31,9 +31,9 @@ export default function Hero() {
       </div>
 
       {/* Content — left column */}
-      <div className="relative z-10 wrap flex-1 flex flex-col justify-end pb-14 md:pb-20 pt-32">
+      <div className="relative z-10 wrap flex-1 flex flex-col justify-end pb-14 md:pb-20 pt-32 !ml-0">
         <div className="max-w-[44rem]">
-          <h1 className="display-hero text-[var(--color-ink-hi)]">
+          <h1 className="display-hero text-4xl md: text-5xl text-[var(--color-ink-hi)]">
             <span className="hero-line">Engineering reliable,</span>
             <span className="hero-line hero-line--2">distributed systems that</span>
             <span className="hero-line hero-line--3">
@@ -42,7 +42,7 @@ export default function Hero() {
           </h1>
 
         <div className="hero-fade mt-9 md:mt-12 flex flex-wrap items-center gap-4">
-            <Link href="#work" className="btn btn--solid">
+            <Link href="#github/asoyovick" className="btn btn--solid">
               Explore my work
               <Arrow />
             </Link>

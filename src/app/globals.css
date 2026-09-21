@@ -182,7 +182,7 @@ body {
 
 /* Editorial display sizes — clamp keeps mobile unbroken */
 .display-hero {
-  font-size: clamp(2.6rem, 9.5vw, 7.5rem);
+  font-size: clamp(2rem, 7vw, 5.5rem);
   line-height: 0.98;
   letter-spacing: -0.03em;
   font-weight: 700;
@@ -351,7 +351,7 @@ body {
 
 /* Cinematic photo scrims */
 .scrim-l {
-  background: linear-gradient(90deg, rgba(8, 8, 10, 0.94) 0%, rgba(8, 8, 10, 0.82) 34%, rgba(8, 8, 10, 0.35) 68%, rgba(8, 8, 10, 0.12) 100%);
+  background: linear-gradient(90deg, rgba(8, 8, 10, 0.82) 0%, rgba(8, 8, 10, 0.65) 34%, rgba(8, 8, 10, 0.2) 68%, rgba(8, 8, 10, 0.05) 100%);
 }
 .scrim-b {
   background: linear-gradient(180deg, rgba(8, 8, 10, 0.1) 0%, rgba(8, 8, 10, 0.62) 55%, rgba(8, 8, 10, 0.94) 100%);
@@ -360,7 +360,7 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(8, 8, 10, 0.55), transparent 30%, transparent 70%, rgba(8, 8, 10, 0.55));
+  background: linear-gradient(180deg, rgba(8, 8, 10, 0.35), transparent 30%, transparent 70%, rgba(8, 8, 10, 0.35));
   pointer-events: none;
 }
 
