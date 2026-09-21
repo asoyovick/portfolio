@@ -32,8 +32,7 @@ export default function About() {
           {/* Copy + timeline */}
           <div className="order-1 lg:order-2">
             <ScrollReveal>
-              <p className="label">About me</p>
-              <h2
+               <h2
                 id="about-heading"
                 className="display-lg text-[var(--color-paper-text)] mt-6 mb-8"
               >
