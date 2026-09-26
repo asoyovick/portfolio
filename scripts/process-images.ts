@@ -27,7 +27,12 @@ async function fromJpg(
   opts: { position?: string; quality?: number } = {},
 ) {
   await grade(sharp(src))
-    .resize(width, height, { fit: "cover", position: opts.position ?? "attention" })
+    .resize(width, height, {
+      fit: "cover",
+      position: opts.position ?? "attention",
+      // Never upscale beyond the source photo — small sources stay sharp.
+      withoutEnlargement: true,
+    })
     .jpeg({ quality: opts.quality ?? 80, progressive: true, mozjpeg: true })
     .toFile(path.join(OUT, out));
   console.log(`✓ ${out}`);
@@ -37,9 +42,9 @@ async function main() {
   await mkdir(OUT, { recursive: true });
 
   // Hero — cinematic wide crop, dominates the right side of the viewport.
-  await fromJpg("public/IMG_3834.JPG", "hero.jpg", 2400, 1800, { quality: 82 });
+  await fromJpg("public/herosection.jpg", "hero.jpg", 2400, 1800, { quality: 82 });
   // Smaller hero for narrow screens keeps mobile payloads light.
-  await fromJpg("public/IMG_3834.JPG", "hero-mobile.jpg", 1200, 1350, { quality: 78 });
+  await fromJpg("public/herosection.jpg", "hero-mobile.jpg", 1200, 1350, { quality: 78 });
 
   // About — portrait crop of the profile photo.
   await fromJpg("public/profile.jpg", "about.jpg", 1000, 1250, { quality: 82 });
