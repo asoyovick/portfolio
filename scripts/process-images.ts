@@ -46,7 +46,8 @@ async function main() {
   // Smaller hero for narrow screens keeps mobile payloads light.
   await fromJpg("public/herosection.jpg", "hero-mobile.jpg", 1200, 1350, { quality: 78 });
 
-  // About — portrait crop of the profile photo.
+  // About — portrait crop of the profile photo. 4:5 to match the About
+  // section frame; 'attention' centers on the subject (face-aware-ish).
   await fromJpg("public/profile.jpg", "about.jpg", 1000, 1250, { quality: 82 });
 
   // Drives — atmospheric landscape-grade frame from the second photo.

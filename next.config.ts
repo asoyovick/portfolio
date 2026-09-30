@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Fully static content — no remote image hosts needed.
+  images: {},
 };
 
 export default nextConfig;

@@ -16,6 +16,30 @@ export default function Footer() {
           <nav aria-label="Footer">
             <ul className="flex flex-wrap items-center gap-x-7 gap-y-3">
               <li>
+                <Link
+                  href="/gallery"
+                  className="u-link text-sm text-[var(--color-ink-mid)] hover:text-[var(--color-ink-hi)] transition-colors"
+                >
+                  Gallery
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/articles"
+                  className="u-link text-sm text-[var(--color-ink-mid)] hover:text-[var(--color-ink-hi)] transition-colors"
+                >
+                  Articles
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/cv"
+                  className="u-link text-sm text-[var(--color-ink-mid)] hover:text-[var(--color-ink-hi)] transition-colors"
+                >
+                  CV
+                </Link>
+              </li>
+              <li>
                 <a
                   href={site.github}
                   target="_blank"
@@ -42,14 +66,6 @@ export default function Footer() {
                 >
                   Email
                 </a>
-              </li>
-              <li>
-                <Link
-                  href="/login"
-                  className="u-link font-mono text-[11px] uppercase tracking-[0.14em] text-[var(--color-ink-dim)] hover:text-[var(--color-ink-hi)] transition-colors"
-                >
-                  Admin
-                </Link>
               </li>
             </ul>
           </nav>

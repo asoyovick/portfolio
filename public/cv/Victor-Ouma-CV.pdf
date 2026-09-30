@@ -1,0 +1,50 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 1154 >>
+stream
+BT /F1 24 Tf 72 760 Td (Victor Ouma) Tj ET
+BT /F2 12 Tf 72 746 Td (Software · AI · Backend Developer  Kisumu, Kenya) Tj ET
+BT /F1 11 Tf 72 730 Td (PROFILE) Tj ET
+BT /F2 11 Tf 72 716 Td (Developer and builder focused on backend systems, practical AI and) Tj ET
+BT /F2 11 Tf 72 712 Td (security-minded engineering. Learning by shipping: Go services, APIs) Tj ET
+BT /F2 11 Tf 72 708 Td (and products like VECAI and Chemichemi.) Tj ET
+BT /F1 11 Tf 72 694 Td (EXPERIENCE) Tj ET
+BT /F2 11 Tf 72 680 Td (2025 - Present   Independent Developer & Builder - VECAI / Chemichemi) Tj ET
+BT /F2 11 Tf 72 676 Td (2023 - 2025      Peer-driven Software Training - Zone01 Kisumu) Tj ET
+BT /F2 11 Tf 72 672 Td (2022 - 2023      Freelance & Community Projects - Kenya) Tj ET
+BT /F1 11 Tf 72 658 Td (SKILLS) Tj ET
+BT /F2 11 Tf 72 644 Td (Go · TypeScript · SQL · REST APIs · SQLite/Postgres · WebSockets) Tj ET
+BT /F2 11 Tf 72 640 Td (Applied AI · Secure coding · Threat modelling · Git · Linux · Next.js) Tj ET
+BT /F1 11 Tf 72 626 Td (CONTACT) Tj ET
+BT /F2 11 Tf 72 612 Td (oumaasoyoh@gmail.com  ·  github.com/asoyovick  ·  linkedin.com/in/victorouma) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000251 00000 n 
+0000001456 00000 n 
+0000001531 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+1601
+%%EOF

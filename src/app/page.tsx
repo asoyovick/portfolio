@@ -7,6 +7,7 @@ import HowIThink from "@/components/sections/HowIThink";
 import About from "@/components/sections/About";
 import WhatDrivesMe from "@/components/sections/WhatDrivesMe";
 import SelectedWork from "@/components/sections/SelectedWork";
+import Gallery from "@/components/sections/Gallery";
 import Thinking from "@/components/sections/Thinking";
 import Mission from "@/components/sections/Mission";
 import Contact from "@/components/sections/Contact";
@@ -28,6 +29,7 @@ export default function Home() {
         <About />
         <WhatDrivesMe />
         <SelectedWork />
+        <Gallery />
         <Thinking />
         <Mission />
         <Contact />

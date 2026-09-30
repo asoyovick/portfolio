@@ -51,8 +51,8 @@ export default function WhatIBuild() {
           </ScrollReveal>
           <ScrollReveal delay={120} className="lg:col-span-5 lg:col-start-8 lg:self-end">
             <p className="text-base md:text-lg leading-relaxed text-[var(--color-paper-mid)] max-w-md">
-             Go developer focused on distributed systems, backend infrastructre and engineeriering principles
-             behind reliable software.
+             Go developer focused on distributed systems, backend infrastructure and the engineering
+             principles behind reliable software.
              </p>
           </ScrollReveal>
         </div>

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { selectedWork, type Project } from "@/lib/content";
 
@@ -124,12 +125,12 @@ export default function SelectedWork() {
                   {featured.description}
                 </p>
                 <StackTags stack={featured.stack} />
-                <a
-                  href="#vecai"
+                <Link
+                  href="#contact"
                   className="u-link mt-8 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-ink-hi)]"
                 >
                   View project →
-                </a>
+                </Link>
               </div>
             </article>
           </ScrollReveal>

@@ -2,13 +2,15 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { site } from "@/lib/content";
 import { GitHubIcon } from "@/components/ui/primitives";
 
 const navLinks = [
-  { href: "/#work", label: "Work" },
-  { href: "/#about", label: "About" },
-  { href: "/#thinking", label: "Thinking" },
+  { href: "/#work", label: "Projects" },
+  { href: "/gallery", label: "Gallery" },
+  { href: "/articles", label: "Articles" },
+  { href: "/cv", label: "CV" },
   { href: "/#contact", label: "Contact" },
 ];
 
@@ -16,15 +18,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [overLight, setOverLight] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
-
-  useEffect(() => {
-    // Highlight the admin entry point when an admin session exists.
-    fetch("/api/auth/session")
-      .then((res) => (res.ok ? res.json() : null))
-      .then((data) => setIsAdmin(!!data?.user))
-      .catch(() => {});
-  }, []);
+  const pathname = usePathname();
 
   useEffect(() => {
     let raf = 0;
@@ -66,6 +60,9 @@ export default function Navigation() {
       : "bg-[var(--color-ink-deep)]/85 backdrop-blur-sm"
     : "";
 
+  const isActive = (href: string) =>
+    href.startsWith("/#") ? false : pathname === href;
+
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${bg}`}>
       <nav
@@ -86,7 +83,12 @@ export default function Navigation() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`u-link text-[13px] font-medium tracking-[0.06em] ${tone} opacity-80 hover:opacity-100 transition-opacity duration-500`}
+                  aria-current={isActive(link.href) ? "page" : undefined}
+                  className={`u-link hidden lg:inline-flex text-[13px] font-medium tracking-[0.06em] ${tone} ${
+                    isActive(link.href)
+                      ? "opacity-100"
+                      : "opacity-80 hover:opacity-100"
+                  } transition-opacity duration-500`}
                 >
                   {link.label}
                 </Link>
@@ -102,14 +104,6 @@ export default function Navigation() {
             <GitHubIcon size={15} />
             GitHub
           </a>
-          {isAdmin && (
-            <Link
-              href="/admin"
-              className={`text-[11px] font-mono tracking-[0.14em] uppercase px-3 py-1.5 border ${tone} border-current opacity-70 hover:opacity-100 transition-opacity`}
-            >
-              Admin
-            </Link>
-          )}
         </div>
 
         {/* Mobile toggle */}
