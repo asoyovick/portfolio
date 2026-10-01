@@ -12,11 +12,6 @@ import Thinking from "@/components/sections/Thinking";
 import Mission from "@/components/sections/Mission";
 import Contact from "@/components/sections/Contact";
 
-/**
- * Narrative arc:
- * WHO I AM → WHAT I BUILD → HOW I THINK → WHAT I'VE BUILT →
- * WHAT DRIVES ME → WHAT'S NEXT
- */
 export default function Home() {
   return (
     <>
