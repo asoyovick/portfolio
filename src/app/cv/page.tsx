@@ -12,17 +12,21 @@ import {
 export const metadata = {
   title: "CV | Victor Ouma",
   description:
-    "Résumé of Victor Ouma — software, AI and backend developer based in Kisumu, Kenya.",
+    "Résumé of Victor Ouma, software developer focused on backend and full-stack development.",
 };
 
 /** PDF lives in public/cv/ — drop a file there to enable the download. */
 const CV_PDF = "/cv/Victor-Ouma-CV.pdf";
 
-function Period({ start, end }: { start: string; end: string }) {
+/** Accent dot marker for résumé bullet points. */
+function Bullet({ dark }: { dark?: boolean }) {
   return (
-    <p className="meta flex-none md:text-right md:w-32">
-      {start} — {end}
-    </p>
+    <span
+      aria-hidden="true"
+      className={`mt-[0.55em] h-1 w-1 flex-none rounded-full ${
+        dark ? "bg-[var(--color-accent)]" : "bg-[var(--color-accent-deep)]"
+      }`}
+    />
   );
 }
 
@@ -35,7 +39,7 @@ export default function CVPage() {
           Curriculum <span className="serif italic font-medium">vitae.</span>
         </>
       }
-      intro={`${cvProfile.role} — ${cvProfile.location}.`}
+      intro={cvProfile.summary}
       image="/images/about.jpg"
       imageAlt="Portrait of Victor Ouma"
     >
@@ -53,6 +57,14 @@ export default function CVPage() {
                   className="u-link font-medium text-[var(--color-paper-text)]"
                 >
                   {cvProfile.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={cvProfile.phoneHref}
+                  className="u-link font-medium text-[var(--color-paper-text)]"
+                >
+                  {cvProfile.phone}
                 </a>
               </li>
               <li>
@@ -118,8 +130,13 @@ export default function CVPage() {
             </div>
             <ol className="md:col-span-9 space-y-12">
               {cvExperience.map((job) => (
-                <li key={`${job.organization}-${job.startDate}`} className="grid md:grid-cols-12 gap-4">
-                  <Period start={job.startDate} end={job.endDate} />
+                <li
+                  key={`${job.organization}-${job.role}`}
+                  className="grid md:grid-cols-12 gap-4"
+                >
+                  <p className="meta flex-none md:text-right md:w-32">
+                    {job.period}
+                  </p>
                   <div className="md:col-span-9">
                     <h3 className="text-xl font-semibold text-[var(--color-paper-text)]">
                       {job.role}
@@ -127,13 +144,64 @@ export default function CVPage() {
                     <p className="text-sm font-medium text-[var(--color-accent-deep)] mt-0.5">
                       {job.organization}
                     </p>
-                    <p className="text-[15px] leading-relaxed text-[var(--color-paper-mid)] mt-3 max-w-xl">
-                      {job.description}
-                    </p>
+                    <ul className="mt-3 space-y-2">
+                      {job.bullets.map((bullet) => (
+                        <li
+                          key={bullet}
+                          className="flex gap-3 text-[15px] leading-relaxed text-[var(--color-paper-mid)] max-w-xl"
+                        >
+                          <Bullet />
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </li>
               ))}
             </ol>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects */}
+      <section
+        aria-labelledby="cv-projects-heading"
+        className="light section-light border-t border-[var(--color-paper-line)]"
+      >
+        <div className="wrap py-16 md:py-20">
+          <div className="grid md:grid-cols-12 gap-10">
+            <div className="md:col-span-3">
+              <h2 id="cv-projects-heading" className="label">
+                Projects
+              </h2>
+            </div>
+            <ul className="md:col-span-9 space-y-12">
+              {cvProjects.map((project) => (
+                <li
+                  key={project.name}
+                  className="border-l-2 border-[var(--color-paper-line)] pl-6"
+                >
+                  <h3 className="text-xl font-semibold text-[var(--color-paper-text)]">
+                    {project.name}
+                  </h3>
+                  <p className="text-sm font-medium text-[var(--color-accent-deep)] mt-0.5">
+                    {project.tagline}
+                  </p>
+                  <p className="meta mt-2">{project.stack.join(" · ")}</p>
+                  <ul className="mt-3 space-y-2">
+                    {project.bullets.map((bullet) => (
+                      <li
+                        key={bullet}
+                        className="flex gap-3 text-[15px] leading-relaxed text-[var(--color-paper-mid)] max-w-xl"
+                      >
+                        <Bullet />
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -159,9 +227,11 @@ export default function CVPage() {
                   <p className="text-sm font-medium text-[var(--color-accent-deep)] mt-0.5">
                     {edu.institution} · {edu.period}
                   </p>
-                  <p className="text-[15px] leading-relaxed text-[var(--color-paper-mid)] mt-2 max-w-xl">
-                    {edu.detail}
-                  </p>
+                  {edu.detail && (
+                    <p className="text-[15px] leading-relaxed text-[var(--color-paper-mid)] mt-2 max-w-xl">
+                      {edu.detail}
+                    </p>
+                  )}
                 </li>
               ))}
             </ol>
@@ -198,40 +268,6 @@ export default function CVPage() {
                 </div>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects */}
-      <section
-        aria-labelledby="cv-projects-heading"
-        className="bg-[var(--color-ink)] text-[var(--color-ink-hi)] border-t border-[var(--color-ink-hair)]"
-      >
-        <div className="wrap py-16 md:py-20">
-          <div className="grid md:grid-cols-12 gap-10">
-            <div className="md:col-span-3">
-              <h2 id="cv-projects-heading" className="label">
-                Projects
-              </h2>
-            </div>
-            <ul className="md:col-span-9 space-y-8">
-              {cvProjects.map((project) => (
-                <li
-                  key={project.name}
-                  className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-8"
-                >
-                  <h3 className="text-lg font-semibold text-[var(--color-ink-hi)] sm:w-48 flex-none">
-                    {project.name}
-                  </h3>
-                  <div>
-                    <p className="text-[15px] leading-relaxed text-[var(--color-ink-mid)] max-w-xl">
-                      {project.description}
-                    </p>
-                    <p className="meta mt-2">{project.stack.join(" · ")}</p>
-                  </div>
-                </li>
-              ))}
-            </ul>
           </div>
         </div>
       </section>
