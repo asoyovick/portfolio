@@ -1,11 +1,5 @@
 @import "tailwindcss";
 
-/* ============================================================
-   VICTOR OUMA — editorial design system
-   Palette: near-black / black / warm off-white / light gray
-   Blue is an accent, never a surface.
-   ============================================================ */
-
 @theme inline {
   /* Surfaces — dark */
   --color-ink: #0d0d10; /* near black — dark section base */
@@ -130,11 +124,6 @@ body {
   }
 }
 
-/* Thin full-bleed rules that frame editorial sections */
-.rule-x {
-  border-top: 1px solid var(--color-ink-hair);
-}
-
 /* ------------------------------------------------------------
    Typography helpers
    ------------------------------------------------------------ */
@@ -156,15 +145,8 @@ body {
   background: var(--color-accent);
   flex: none;
 }
-.label--bare::before {
-  display: none;
-}
 
-.light .label {
-  color: var(--color-paper-dim);
-}
-
-/* Editorial display sizes — clamp keeps mobile unbroken */
+/* Editorial display sizes */
 .display-hero {
   font-size: clamp(2rem, 7vw, 5.5rem);
   line-height: 0.98;
@@ -325,20 +307,9 @@ body {
   color: var(--color-paper-text);
 }
 
-/* Hairline grid texture for dark sections */
-.bg-blueprint {
-  background-image:
-    linear-gradient(rgba(245, 242, 236, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(245, 242, 236, 0.025) 1px, transparent 1px);
-  background-size: 72px 72px;
-}
-
 /* Cinematic photo scrims */
 .scrim-l {
   background: linear-gradient(90deg, rgba(8, 8, 10, 0.55) 0%, rgba(8, 8, 10, 0.34) 32%, rgba(8, 8, 10, 0.08) 64%, rgba(8, 8, 10, 0) 100%);
-}
-.scrim-b {
-  background: linear-gradient(180deg, rgba(8, 8, 10, 0.1) 0%, rgba(8, 8, 10, 0.62) 55%, rgba(8, 8, 10, 0.94) 100%);
 }
 .scrim-l::after {
   content: "";
@@ -349,7 +320,7 @@ body {
 }
 
 /* ------------------------------------------------------------
-   Keyframes — restrained
+   Keyframes
    ------------------------------------------------------------ */
 
 @keyframes vo-rise {
@@ -360,27 +331,6 @@ body {
   to {
     opacity: 1;
     transform: none;
-  }
-}
-
-@keyframes vo-blink {
-  0%,
-  55% {
-    opacity: 1;
-  }
-  56%,
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes vo-drift {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(8px);
   }
 }
 
@@ -399,18 +349,12 @@ body {
   opacity: 0;
   animation: vo-rise 0.9s var(--ease-out-expo) 0.4s forwards;
 }
-.cursor-blink {
-  animation: vo-blink 1.1s step-end infinite;
-}
 
-/* Keeps headline legible over a much lighter photo scrim */
+/* Keeps headline legible over a photo scrim */
 .hero-shadow {
   text-shadow:
     0 1px 2px rgba(8, 8, 10, 0.35),
     0 4px 28px rgba(8, 8, 10, 0.45);
-}
-.drift {
-  animation: vo-drift 2.6s ease-in-out infinite;
 }
 
 /* ------------------------------------------------------------
