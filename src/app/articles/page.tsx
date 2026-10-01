@@ -70,7 +70,7 @@ export default function ArticlesPage() {
                 )}
               </div>
               <div>
-                <p className="meta mb-4">Latest — {formatDate(featured.date)}</p>
+                <p className="meta mb-4">Latest · {formatDate(featured.date)}</p>
                 <h2 className="display-lg text-[var(--color-ink-hi)] mb-4 group-hover:text-[var(--color-accent-soft)] transition-colors">
                   {featured.title}
                 </h2>
