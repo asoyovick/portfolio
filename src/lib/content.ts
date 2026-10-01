@@ -63,8 +63,9 @@ export const selectedWork: Project[] = [
   {
     id: "vecai",
     name: "VECAI",
-    description: "AI-powered construction intelligence.",
-    stack: ["Go", "AI", "Construction"],
+    description:
+      "Construction platform for quotations, BOQs and supplier workflows.",
+    stack: ["Go", "Gin", "PostgreSQL"],
     image: "/vecai.png",
     kind: "system",
   },

@@ -3,10 +3,7 @@ import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { Arrow } from "@/components/ui/primitives";
 
-/**
- * Visual representation of the VECAI interface — a design mockup only.
- * Figures are illustrative UI, not real-world metrics.
- */
+/** Design mockup of the VECAI interface. Figures are illustrative UI. */
 function VecaiMockup() {
   const materials = [
     { name: "Cement", note: "Bulk order", width: "78%" },
@@ -14,7 +11,7 @@ function VecaiMockup() {
     { name: "Timber", note: "In comparison", width: "64%" },
   ];
   return (
-    <div className="vecai-mock rounded-xl border border-[var(--color-ink-hair)] bg-[var(--color-ink-soft)]/95 backdrop-blur-md shadow-[0_40px_90px_-30px_rgba(0,0,0,0.85)] overflow-hidden text-left">
+    <div className="rounded-xl border border-[var(--color-ink-hair)] bg-[var(--color-ink-soft)]/95 overflow-hidden text-left">
       {/* Window bar */}
       <div className="flex items-center gap-2 px-4 py-3 border-b border-[var(--color-ink-hair)]">
         <span className="w-2.5 h-2.5 rounded-full bg-[#3a3a44]" aria-hidden="true" />
@@ -167,23 +164,17 @@ export default function VecaiFeature() {
           {/* Copy */}
           <div className="max-w-xl">
             <ScrollReveal>
-               <h2
+              <h2
                 id="vecai-heading"
-                className="display-xl mt-6 mb-6 text-[var(--color-ink-hi)]"
+                className="display-xl mb-6 text-[var(--color-ink-hi)]"
               >
                 VECAI
               </h2>
-              <p className="display-md text-[var(--color-ink-hi)] mb-6">
-                Build smarter.
-                <br />
-                Build stronger.
-              </p>
               <p className="text-base md:text-lg leading-relaxed text-[var(--color-ink-mid)] mb-8 max-w-md">
-                An AI-powered construction intelligence platform for planning,
-                costing and coordination.
+                Construction software for planning, costing and coordination:
+                quotations, BOQs, supplier workflows and site timelines in one
+                place, built for the way Kenyan sites actually run.
               </p>
-              <ul className="flex flex-wrap gap-x-6 gap-y-2 mb-10">
-               </ul>
               <Link href="#contact" className="btn btn--solid">
                 View project
                 <Arrow />

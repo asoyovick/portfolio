@@ -13,8 +13,8 @@ export default function About() {
     >
       <div className="wrap-wide py-24 md:py-32 lg:py-36">
         <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
-          {/* Photograph */}
-          <ScrollReveal mode="clip" className="order-2 lg:order-1 lg:sticky lg:top-24">
+          {/* Photograph (Left side on all screens) */}
+          <ScrollReveal mode="clip" className="order-1 lg:sticky lg:top-24">
             <div className="relative aspect-[4/5] overflow-hidden">
               <Image
                 src="/images/about.jpg"
@@ -25,12 +25,12 @@ export default function About() {
               />
             </div>
             <p className="meta mt-4">
-              Victor Ouma — developer and builder
+              Victor Ouma, developer and builder
             </p>
           </ScrollReveal>
 
-          {/* Copy + timeline */}
-          <div className="order-1 lg:order-2">
+          {/* Copy + timeline (Right side on all screens) */}
+          <div className="order-2">
             <ScrollReveal>
                <h2
                 id="about-heading"

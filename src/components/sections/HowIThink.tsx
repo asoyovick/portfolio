@@ -8,7 +8,6 @@ export default function HowIThink() {
       aria-labelledby="how-i-think-heading"
       className="light section-light relative overflow-hidden"
     >
-      {/* Oversized ghost numeral grounds the editorial composition */}
       <span
         aria-hidden="true"
         className="pointer-events-none select-none absolute -top-10 right-0 font-mono font-bold leading-none text-[26rem] md:text-[40rem] text-[var(--color-paper-text)] opacity-[0.035]"
@@ -21,7 +20,7 @@ export default function HowIThink() {
           <ScrollReveal className="lg:col-span-6">
              <h2
               id="how-i-think-heading"
-              className="display-lg text-[var(--color-paper-text)] mt-6"
+              className="display-lg text-[var(--color-paper-text)]"
             >
               I like turning
               <br />

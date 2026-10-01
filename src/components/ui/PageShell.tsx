@@ -2,10 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 
-/**
- * Shared editorial page shell for /gallery, /articles and /cv —
- * full-bleed dark hero with photo, then children.
- */
 export default function PageShell({
   label,
   title,
@@ -14,6 +10,7 @@ export default function PageShell({
   imageAlt,
   children,
 }: {
+  /** Short route name used for aria labels ("Gallery", "Articles", "CV"). */
   label: string;
   title: React.ReactNode;
   intro: string;
@@ -24,7 +21,6 @@ export default function PageShell({
 }) {
   return (
     <>
-      {/* Page hero */}
       <section
         aria-label={`${label} — page header`}
         className="bg-[var(--color-ink-deep)] text-[var(--color-ink-hi)] relative overflow-hidden"
@@ -48,8 +44,7 @@ export default function PageShell({
         )}
         <div className="wrap pt-36 pb-14 md:pt-44 md:pb-20">
           <ScrollReveal>
-            <p className="label">{label}</p>
-            <h1 className="display-xl mt-6 max-w-3xl">{title}</h1>
+            <h1 className="display-xl max-w-3xl">{title}</h1>
             <p className="text-base md:text-lg leading-relaxed text-[var(--color-ink-mid)] max-w-xl mt-6">
               {intro}
             </p>
@@ -57,13 +52,11 @@ export default function PageShell({
         </div>
       </section>
 
-      {/* Page body */}
       <main aria-label={`${label} content`}>{children}</main>
     </>
   );
 }
 
-/** Small dark strip on subpages: back link, positioned under the nav. */
 export function SubNavBack({ href, label }: { href: string; label: string }) {
   return (
     <div className="bg-[var(--color-ink-deep)] border-t border-[var(--color-ink-hair)]">

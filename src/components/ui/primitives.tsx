@@ -1,15 +1,3 @@
-/** Small shared editorial primitives. */
-
-export function SectionLabel({
-  children,
-  className = "",
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return <span className={`label ${className}`}>{children}</span>;
-}
-
 export function Arrow({ className = "" }: { className?: string }) {
   return (
     <svg

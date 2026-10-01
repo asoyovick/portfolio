@@ -1,15 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { galleryItems, galleryCategories } from "@/lib/gallery";
+import { galleryItems } from "@/lib/gallery";
 
-/**
- * Homepage gallery teaser — a curated slice of `src/lib/gallery.ts`.
- * Renders a static grid (no API, no database) and links to /gallery
- * for the full, filterable experience.
- */
+/** Homepage gallery teaser: one item per category, then fill to six. */
 export default function Gallery() {
-  // Lead with one item per category, then fill remaining slots.
   const picked: typeof galleryItems = [];
   const seen = new Set<string>();
   for (const item of galleryItems) {
@@ -31,32 +26,17 @@ export default function Gallery() {
       className="bg-[var(--color-ink)] text-[var(--color-ink-hi)] border-t border-[var(--color-ink-hair)]"
     >
       <div className="wrap-wide py-24 md:py-32 lg:py-36">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12 md:mb-16">
-          <ScrollReveal>
-            <h2
-              id="gallery-heading"
-              className="display-lg mt-6 text-[var(--color-ink-hi)]"
-            >
-              Beyond the <span className="serif italic font-medium">screen.</span>
-            </h2>
-            <p className="text-base md:text-lg text-[var(--color-ink-mid)] max-w-md mt-4">
-              Moments, places and things I&apos;ve captured along the way.
-            </p>
-          </ScrollReveal>
-
-          <ScrollReveal delay={120}>
-            <div className="flex flex-wrap gap-2" aria-hidden="true">
-              {galleryCategories.slice(0, 4).map((cat) => (
-                <span
-                  key={cat}
-                  className="font-mono text-[11px] tracking-[0.14em] uppercase px-3.5 py-1.5 border border-[var(--color-ink-hair)] text-[var(--color-ink-mid)]"
-                >
-                  {cat}
-                </span>
-              ))}
-            </div>
-          </ScrollReveal>
-        </div>
+        <ScrollReveal className="mb-12 md:mb-16">
+          <h2
+            id="gallery-heading"
+            className="display-lg text-[var(--color-ink-hi)]"
+          >
+            Beyond the <span className="serif italic font-medium">screen.</span>
+          </h2>
+          <p className="text-base md:text-lg text-[var(--color-ink-mid)] max-w-md mt-4">
+            Photos from projects, events and places I&apos;ve worked.
+          </p>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {picked.map((item, i) => (

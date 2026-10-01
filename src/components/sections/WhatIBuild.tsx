@@ -1,7 +1,6 @@
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { whatIBuild } from "@/lib/content";
 
-/** Small inline glyphs — strokes inherit currentColor. */
 const glyphs: Record<string, React.ReactNode> = {
   Software: (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -42,7 +41,7 @@ export default function WhatIBuild() {
           <ScrollReveal className="lg:col-span-5">
             <h2
               id="what-i-build-heading"
-              className="display-lg text-[var(--color-paper-text)] mt-6"
+              className="display-lg text-[var(--color-paper-text)]"
             >
               Technology
               <br />
@@ -67,7 +66,7 @@ export default function WhatIBuild() {
                 i > 0 ? "lg:border-l" : ""
               } ${i === 1 ? "sm:border-l" : ""} ${i === 3 ? "sm:border-l lg:border-l" : ""} border-[var(--color-paper-line)]`}
             >
-              <div className="flex items-start justify-between mb-14 md:mb-20">
+              <div className="flex items-start justify-between mb-6 md:mb-8">
                 <span className="font-mono text-xs tracking-[0.2em] text-[var(--color-paper-dim)]">
                   {item.index}
                 </span>

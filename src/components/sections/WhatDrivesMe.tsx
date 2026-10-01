@@ -32,11 +32,11 @@ export default function WhatDrivesMe() {
           <ScrollReveal>
            <h2
               id="drives-heading"
-              className="display-xl mt-6 mb-8 text-[var(--color-ink-hi)]"
+              className="display-xl mb-8 text-[var(--color-ink-hi)]"
             >
-              Technology
+              Software for
               <br />
-              <span className="serif italic font-medium">that matters.</span>
+              <span className="serif italic font-medium">real conditions.</span>
             </h2>
             <p className="text-lg md:text-xl leading-relaxed text-[var(--color-ink-mid)] max-w-xl">
               My interests sit at the intersection of technology and real-world

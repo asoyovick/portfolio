@@ -44,7 +44,7 @@ export default function GalleryPage() {
           Beyond the <span className="serif italic font-medium">screen.</span>
         </>
       }
-      intro="Projects, designs, events and moments captured along the way — the visual side of the work."
+      intro="Projects, designs, events and moments captured along the way."
       image="/images/drives.jpg"
       imageAlt="Landscape photograph"
     >
@@ -160,7 +160,7 @@ export default function GalleryPage() {
             </div>
             <figcaption className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mt-4">
               <span className="text-sm text-[var(--color-ink-hi)]">
-                {lightbox.title} — {lightbox.description}
+                {lightbox.title}: {lightbox.description}
               </span>
               <span className="meta flex-none">
                 {lightbox.link ? (

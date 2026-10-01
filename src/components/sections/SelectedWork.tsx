@@ -3,13 +3,9 @@ import Link from "next/link";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { selectedWork, type Project } from "@/lib/content";
 
-/**
- * Abstract SVG visualizations used when a project has no photo.
- * Geometric, editorial — never fake screenshots.
- */
+/** Abstract SVG visualizations used when a project has no photo. */
 function ProjectGraphic({ kind }: { kind: Project["kind"] }) {
   if (kind === "algorithm") {
-    // Lem-in — a graph: nodes and paths
     return (
       <svg viewBox="0 0 400 260" className="w-full h-full" aria-hidden="true">
         <g stroke="var(--color-ink-hair)" strokeWidth="1">
@@ -54,7 +50,6 @@ function ProjectGraphic({ kind }: { kind: Project["kind"] }) {
       </svg>
     );
   }
-  // Default — layered system diagram
   return (
     <svg viewBox="0 0 400 260" className="w-full h-full" aria-hidden="true">
       <rect x="60" y="40" width="280" height="44" rx="2" fill="none" stroke="var(--color-ink-hair)" />
@@ -92,19 +87,16 @@ export default function SelectedWork() {
       className="bg-[var(--color-ink)] text-[var(--color-ink-hi)]"
     >
       <div className="wrap-wide py-24 md:py-32 lg:py-36">
-        <ScrollReveal className="flex items-end justify-between gap-8 mb-14 md:mb-20">
-          <div>   
-            <h2
-              id="work-heading"
-              className="display-lg mt-6 text-[var(--color-ink-hi)]"
-            >
-              Selected <span className="serif italic font-medium">work.</span>
-            </h2>
-          </div>
+        <ScrollReveal className="mb-14 md:mb-20">
+          <h2
+            id="work-heading"
+            className="display-lg text-[var(--color-ink-hi)]"
+          >
+            Selected <span className="serif italic font-medium">work.</span>
+          </h2>
         </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-16 md:gap-y-24">
-          {/* Featured project — full width, image left / text right */}
           <ScrollReveal mode="clip" className="md:col-span-2">
             <article className="group grid md:grid-cols-5 gap-8 md:gap-12 items-center">
               <div className="md:col-span-3 relative aspect-[16/10] overflow-hidden bg-[var(--color-ink-soft)]">
@@ -117,7 +109,6 @@ export default function SelectedWork() {
                 />
               </div>
               <div className="md:col-span-2">
-                <p className="meta mb-4">01 — Featured</p>
                 <h3 className="display-lg text-[var(--color-ink-hi)] mb-4">
                   {featured.name}
                 </h3>
@@ -135,7 +126,6 @@ export default function SelectedWork() {
             </article>
           </ScrollReveal>
 
-          {/* Remaining projects — asymmetric two-column rhythm */}
           {rest.map((project, i) => {
             const tall = i % 2 === 0;
             return (
