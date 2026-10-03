@@ -8,9 +8,9 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-10">
           <div>
             <p className="font-mono text-[13px] font-semibold tracking-[0.18em] uppercase">
-              Victor Ouma
+              Let&apos;s build something.
             </p>
-            <p className="meta mt-3">{site.tagline}</p>
+            <p className="meta mt-3">Go · Backend · AI · Systems</p>
           </div>
 
           <nav aria-label="Footer">
