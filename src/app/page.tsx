@@ -1,15 +1,14 @@
 import Navigation from "@/components/ui/Navigation";
 import Footer from "@/components/ui/Footer";
 import Hero from "@/components/sections/Hero";
+import Currently from "@/components/sections/Currently";
 import WhatIBuild from "@/components/sections/WhatIBuild";
 import VecaiFeature from "@/components/sections/VecaiFeature";
-import HowIThink from "@/components/sections/HowIThink";
-import About from "@/components/sections/About";
-import WhatDrivesMe from "@/components/sections/WhatDrivesMe";
+import ChemichemiFeature from "@/components/sections/ChemichemiFeature";
 import SelectedWork from "@/components/sections/SelectedWork";
+import About from "@/components/sections/About";
 import Gallery from "@/components/sections/Gallery";
-import Thinking from "@/components/sections/Thinking";
-import Mission from "@/components/sections/Mission";
+import Notes from "@/components/sections/Notes";
 import Contact from "@/components/sections/Contact";
 
 export default function Home() {
@@ -18,15 +17,14 @@ export default function Home() {
       <Navigation />
       <main>
         <Hero />
+        <Currently />
         <WhatIBuild />
         <VecaiFeature />
-        <HowIThink />
-        <About />
-        <WhatDrivesMe />
+        <ChemichemiFeature />
         <SelectedWork />
+        <About />
         <Gallery />
-        <Thinking />
-        <Mission />
+        <Notes />
         <Contact />
       </main>
       <Footer />
