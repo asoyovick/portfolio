@@ -86,8 +86,8 @@ export default function SelectedWork() {
       aria-labelledby="work-heading"
       className="bg-[var(--color-ink)] text-[var(--color-ink-hi)]"
     >
-      <div className="wrap-wide py-24 md:py-32 lg:py-36">
-        <ScrollReveal className="mb-14 md:mb-20">
+      <div className="wrap-wide pt-16 pb-24 md:pt-20 md:pb-32 lg:pt-24 lg:pb-36">
+        <ScrollReveal className="mb-8 md:mb-12">
           <h2
             id="work-heading"
             className="display-lg text-[var(--color-ink-hi)]"
