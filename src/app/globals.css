@@ -2,37 +2,36 @@
 
 @theme inline {
   /* Surfaces — dark */
-  --color-ink: #0d0d10; /* near black — dark section base */
-  --color-ink-deep: #08080a; /* pure black anchors */
-  --color-ink-soft: #16161c; /* raised dark surface */
-  --color-ink-line: #26262e; /* hairlines on dark */
+  --color-ink: #181818; /* dark section base */
+  --color-ink-deep: #111111; /* darkest anchors */
+  --color-ink-soft: #222222; /* raised dark surface */
+  --color-ink-line: #2e2e2e; /* hairlines on dark */
 
   /* Surfaces — light */
-  --color-paper: #f4f2ee; /* warm off-white — light sections */
-  --color-paper-hi: #faf9f6; /* brightest warm white */
-  --color-paper-soft: #ebe8e2; /* tinted warm gray */
-  --color-paper-line: #d9d5cc; /* hairlines on light */
+  --color-paper: #F4F1EA; /* warm paper — light sections */
+  --color-paper-hi: #FBF9F4; /* brightest warm white */
+  --color-paper-soft: #E9E5DC; /* code / secondary background */
+  --color-paper-line: #D8D3C8; /* hairlines on light */
 
-  /* The single accent — deep, confident blue */
-  --color-accent: #3a5bd9;
-  --color-accent-deep: #2a44ab;
-  --color-accent-soft: #7c93e8;
-  --color-accent-mist: rgba(58, 91, 217, 0.08);
+  /* The single accent — rust */
+  --color-accent: #D85C32;
+  --color-accent-deep: #B84A26;
+  --color-accent-soft: #E0815D;
+  --color-accent-mist: rgba(216, 92, 50, 0.08);
 
   /* Editorial text tones */
-  --color-ink-hi: #f5f2ec; /* warm white on dark */
-  --color-ink-mid: #a8a6b0; /* secondary on dark */
-  --color-ink-dim: #6f6d78; /* muted on dark */
-  --color-ink-hair: rgba(245, 242, 236, 0.14);
-  --color-paper-text: #1c1b20; /* primary on light */
-  --color-paper-mid: #55535c; /* secondary on light */
-  --color-paper-dim: #8b8992; /* muted on light */
+  --color-ink-hi: #F4F1EA; /* warm white on dark */
+  --color-ink-mid: #B9B5AC; /* secondary on dark */
+  --color-ink-dim: #8A867E; /* muted on dark */
+  --color-ink-hair: rgba(244, 241, 234, 0.14);
+  --color-paper-text: #171717; /* primary on light */
+  --color-paper-mid: #6B6862; /* secondary on light */
+  --color-paper-dim: #948F85; /* muted on light */
 
   /* Type */
-  --font-sans: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
-  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-inter), "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-space), "Helvetica Neue", Arial, sans-serif;
   --font-mono: var(--font-jetbrains), "SFMono-Regular", Menlo, monospace;
-  --font-display: var(--font-archivo);
 
   /* Motion */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
@@ -55,8 +54,8 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background: var(--color-ink);
-  color: var(--color-ink-hi);
+  background: var(--color-paper);
+  color: var(--color-paper-text);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -172,9 +171,20 @@ body {
   font-weight: 620;
 }
 
+.display-hero,
+.display-xl,
+.display-lg,
+.display-md {
+  font-family: var(--font-display);
+}
+
+/* Italic serif accent was part of the old identity; it now renders as
+   rust-coloured display text so the markup keeps working everywhere. */
 .serif {
-  font-family: var(--font-serif);
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-weight: 650;
+  font-style: normal;
+  color: var(--color-accent);
 }
 
 .meta {

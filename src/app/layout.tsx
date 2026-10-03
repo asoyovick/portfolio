@@ -1,18 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Archivo, Fraunces, JetBrains_Mono } from "next/font/google";
+import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const archivo = Archivo({
-  variable: "--font-archivo",
+const space = Space_Grotesk({
+  variable: "--font-space",
   subsets: ["latin"],
   display: "swap",
 });
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
-  style: ["normal", "italic"],
 });
 
 const jetbrains = JetBrains_Mono({
@@ -67,7 +66,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0d0d10",
+  themeColor: "#F4F1EA",
   width: "device-width",
   initialScale: 1,
 };
@@ -86,7 +85,7 @@ export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
     <html
       lang="en"
-      className={`${archivo.variable} ${fraunces.variable} ${jetbrains.variable}`}
+      className={`${space.variable} ${inter.variable} ${jetbrains.variable}`}
     >
       <body className="antialiased">
         {children}
