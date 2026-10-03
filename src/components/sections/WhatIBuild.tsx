@@ -43,15 +43,15 @@ export default function WhatIBuild() {
               id="what-i-build-heading"
               className="display-lg text-[var(--color-paper-text)]"
             >
-              Technology
-              <br />
-              <span className="serif italic font-medium">with a purpose.</span>
+              Tools I <br />
+              actually <span className="serif italic font-medium">reach for.</span>
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={120} className="lg:col-span-5 lg:col-start-8 lg:self-end">
             <p className="text-base md:text-lg leading-relaxed text-[var(--color-paper-mid)] max-w-md">
-             Go developer focused on distributed systems, backend infrastructure and the engineering
-             principles behind reliable software.
+             Mostly Go and PostgreSQL, with Next.js on the front end and
+             Docker for deployment. Security and reliability first, because
+             that&apos;s what survives contact with real users.
              </p>
           </ScrollReveal>
         </div>
