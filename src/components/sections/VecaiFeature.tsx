@@ -11,7 +11,7 @@ function VecaiMockup() {
     { name: "Timber", note: "In comparison", width: "64%" },
   ];
   return (
-    <div className="rounded-xl border border-[var(--color-ink-hair)] bg-[var(--color-ink-soft)]/95 overflow-hidden text-left">
+    <div className="rounded-sm border border-[var(--color-ink-hair)] bg-[var(--color-ink-soft)]/95 overflow-hidden text-left">
       {/* Window bar */}
       <div className="flex items-center gap-2 px-4 py-3 border-b border-[var(--color-ink-hair)]">
         <span className="w-2.5 h-2.5 rounded-full bg-[#3a3a44]" aria-hidden="true" />
@@ -170,13 +170,40 @@ export default function VecaiFeature() {
               >
                 VECAI
               </h2>
-              <p className="text-base md:text-lg leading-relaxed text-[var(--color-ink-mid)] mb-8 max-w-md">
-                Construction software for planning, costing and coordination:
-                quotations, BOQs, supplier workflows and site timelines in one
-                place, built for the way Kenyan sites actually run.
+              <dl className="space-y-5 mb-8 max-w-md">
+                <div>
+                  <dt className="font-mono text-[11px] tracking-[0.22em] uppercase text-[var(--color-accent-soft)] mb-1.5">
+                    The problem
+                  </dt>
+                  <dd className="text-[15px] leading-relaxed text-[var(--color-ink-mid)]">
+                    Construction information gets scattered across documents,
+                    spreadsheets, WhatsApp messages and phone calls.
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-mono text-[11px] tracking-[0.22em] uppercase text-[var(--color-accent-soft)] mb-1.5">
+                    The idea
+                  </dt>
+                  <dd className="text-[15px] leading-relaxed text-[var(--color-ink-mid)]">
+                    A central system for project information, materials,
+                    documents, collaboration and AI-assisted decision support.
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-mono text-[11px] tracking-[0.22em] uppercase text-[var(--color-accent-soft)] mb-1.5">
+                    My role
+                  </dt>
+                  <dd className="text-[15px] leading-relaxed text-[var(--color-ink-mid)]">
+                    Backend APIs in Go and Gin, PostgreSQL schema design,
+                    JWT auth, and the AI-assisted quoting flows.
+                  </dd>
+                </div>
+              </dl>
+              <p className="font-mono text-[11px] tracking-[0.18em] uppercase text-[var(--color-ink-dim)] mb-8">
+                Stack — Go · Gin · PostgreSQL · JWT · AI
               </p>
-              <Link href="#contact" className="btn btn--solid">
-                View project
+              <Link href="/articles/ai-in-construction" className="btn btn--solid">
+                Read the notes
                 <Arrow />
               </Link>
             </ScrollReveal>
@@ -186,7 +213,7 @@ export default function VecaiFeature() {
           <ScrollReveal mode="right" delay={150}>
             <VecaiMockup />
             <p className="meta mt-4 text-right">
-              Interface concept — illustrative only
+              Prototype interface — concept, illustrative only
             </p>
           </ScrollReveal>
         </div>
