@@ -12,38 +12,40 @@ export default function About() {
       className="light section-light relative"
     >
       <div className="wrap-wide py-24 md:py-32 lg:py-36">
-        <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start">
-          {/* Photograph (Left side on all screens) */}
-          <ScrollReveal mode="clip" className="order-1 lg:sticky lg:top-24">
-            <div className="relative aspect-[4/5] overflow-hidden">
+        {/* Explicitly defined grid-cols-1 for phone screens, shifting to grid-cols-2 on lg (desktop) screens */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-start">
+          
+          {/* Photograph (Top on mobile screens, Left side on desktop screens) */}
+          {/* Changed mode to standard fade reveal to troubleshoot the invisible clip-path bug */}
+          <ScrollReveal className="order-1 lg:sticky lg:top-24 w-full">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-sm bg-[var(--color-paper-soft)]">
               <Image
-                src="/images/about.jpg"
+                src="/images/about.jpg" // Ensure this file exists exactly at /public/images/about.jpg
                 alt="Portrait of Victor Ouma"
                 fill
+                priority
                 sizes="(max-width: 1023px) 100vw, 50vw"
                 className="object-cover"
               />
             </div>
-            <p className="meta mt-4">
-              Victor Ouma, developer and builder
-            </p>
+            <p className="meta mt-4 text-[var(--color-paper-dim)]">
+              </p>
           </ScrollReveal>
 
-          {/* Copy + timeline (Right side on all screens) */}
+          {/* Copy + timeline (Bottom on mobile screens, Right side on desktop screens) */}
           <div className="order-2">
             <ScrollReveal>
-               <h2
+              <h2
                 id="about-heading"
                 className="display-lg text-[var(--color-paper-text)] mt-6 mb-8"
               >
                 I&apos;m <span className="serif italic font-medium">Victor.</span>
               </h2>
-              <p className="text-lg md:text-xl leading-relaxed text-[var(--color-paper-text)] max-w-xl mb-10">
-                I&apos;m a developer and builder interested in the intersection
-                of software, AI, backend engineering and cybersecurity. I&apos;m
-                learning by building real systems, experimenting with ideas, and
-                constantly trying to understand how technology can solve
-                problems beyond the screen.
+              <p className="text-lg md:text-xl leading-relaxed text-[var(--color-paper-mid)] max-w-xl mb-10">
+                I am a foward-thinking software developer, backend engineer,
+                and AI enthusiast passionate about transforming complex challenges into intelligent practicle solutions.
+                I focus on building innovative digital products, developing intelligent systems and solving real wrld problems.
+                Dlriven by curiocity, vissionary thinking and a commitment to continuous growth pushing bounderies of what technology can achieve.
               </p>
               <Link
                 href="#drives"
