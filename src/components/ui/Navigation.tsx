@@ -7,10 +7,10 @@ import { site } from "@/lib/content";
 import { GitHubIcon } from "@/components/ui/primitives";
 
 const navLinks = [
-  { href: "/#work", label: "Projects" },
+  { href: "/#work", label: "Work" },
+  { href: "/articles", label: "Writing" },
+  { href: "/#about", label: "About" },
   { href: "/gallery", label: "Gallery" },
-  { href: "/articles", label: "Articles" },
-  { href: "/cv", label: "CV" },
   { href: "/#contact", label: "Contact" },
 ];
 
